@@ -1,0 +1,31 @@
+.WrapperEmployes {
+  position: absolute;
+  left: 33%;
+  top: 11em;
+}
+
+.WrapperEmployes .ListEmployes {
+  width: 67%;
+  color: #fbfc55;
+  text-align: center;
+  font-size: 1.5em;
+  font-family: "Microsoft Sans Serif";
+  margin: 0.2em;
+  border: 0.1em solid;
+  padding: 0.3em;
+}
+
+.button {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  margin: 1em;
+  color: #0301a8;
+  background-color: #fbfc55;
+  border: "none";
+  font-weight: bold
+}
+
+.button:hover {
+  color: #fbfc55;
+  background-color: #0301a8;
+}

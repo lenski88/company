@@ -1,0 +1,9 @@
+.Control {
+    position: fixed;
+    height:10em;
+    width: 100em;
+    border: 0.1em  solid;
+    color: #fbfc55;
+    background-color: #0301a8;
+    z-Index: 1;
+}

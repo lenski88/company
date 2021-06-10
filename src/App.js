@@ -1,11 +1,13 @@
 import React from "react";
 
-import Company from "./components/Company";
+import Employes from "./components/Employes";
+import Header from "./components/Header";
 
 function App() {
   return (
-    <div className='wrapper'>
-      <Company />
+    <div className="wrapper">
+      <Header />
+      <Employes />
     </div>
   );
 }
