@@ -7,7 +7,17 @@ class Header extends React.PureComponent {
   static propTypes = {
     login: PropTypes.bool.isRequired,
     user: PropTypes.object,
+    cbExit: PropTypes.func
   };
+
+  
+  exit = () => {
+    this.props.cbExit({
+      login: false
+    })
+  }
+
+
   render() {
     let name; // имя юзера
     let countTask; // количество задач на кнопке
@@ -33,7 +43,7 @@ class Header extends React.PureComponent {
             </div>
             {this.props.user.level === 3 &&  <input className="button" type="button" value="Добавить сотрудника"></input>}
             <input className="button" type="button" value={countTask}></input>
-            <input className="button" type="button" value="Выйти"></input>
+            <input className="button" type="button" value="Выйти" onPointerDown={this.exit}></input>
           </div>
         </div>
       )

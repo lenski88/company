@@ -7,7 +7,7 @@ class Authorization extends React.PureComponent {
   static propTypes = {
     employes: PropTypes.array.isRequired /* массив сотрудников */,
     login:
-      PropTypes.bool.isRequired /* прошла ли авторизация; по умолчанию false */,
+    PropTypes.bool.isRequired /* прошла ли авторизация; по умолчанию false */,
     cbGetUser: PropTypes.func,
   };
 
@@ -52,7 +52,8 @@ class Authorization extends React.PureComponent {
         user: user,
       });
       this.setState({
-        login: true,
+        nameUser:'',
+        login: this.props.login
       });
     }
   };

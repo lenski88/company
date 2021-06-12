@@ -6,11 +6,9 @@ import Employes from "./components/Employes";
 import Header from "./components/Header";
 
 class App extends React.PureComponent {
- 
-
   state = {
     dataReady: false,
-    userInfo: '',
+    userInfo: "",
     employes: [],
     login: false,
   };
@@ -20,7 +18,7 @@ class App extends React.PureComponent {
   }
 
   fetchError = (errorMessage) => {
-    console.log("dfasdf");
+    alert("Что-то пошло не так...");
   };
 
   fetchSuccess = (loadedData) => {
@@ -53,17 +51,31 @@ class App extends React.PureComponent {
 
   getUser = (user) => {
     this.setState({
-      login: true,
-      userInfo: user
+      login: !this.state.login,
+      userInfo: user,
+    });
+  };
+
+  exit = () => {
+    this.setState ({
+      login: !this.state.login
     })
   }
 
   render() {
     return (
       <div className="wrapper">
-        <Authorization employes={this.state.employes} login={this.state.login} cbGetUser={this.getUser} />
-        <Header user={this.state.userInfo.user} login={this.state.login} />
-        <Employes user={this.state.userInfo.user}  employes={this.state.employes} login={this.state.login} />
+        <Authorization
+          employes={this.state.employes}
+          login={this.state.login}
+          cbGetUser={this.getUser}
+        />
+        <Header user={this.state.userInfo.user} login={this.state.login} cbExit={this.exit} />
+        <Employes
+          user={this.state.userInfo.user}
+          employes={this.state.employes}
+          login={this.state.login}
+        />
       </div>
     );
   }

@@ -1,10 +1,12 @@
 .WrapperEmployes {
   display:flex;
+  background-color: #0301a8 ;
   flex-flow: column wrap;
   align-items: center;
   position:absolute;
   top: 11em;
-  width:100%
+  width:100%;
+  z-index: 1;
 }
 
 .WrapperEmployes .ListEmployes {
