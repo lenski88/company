@@ -24,14 +24,16 @@ class Header extends React.PureComponent {
           <div style={{ display: "flex", justifyContent: "center" }}>
             <h3>Приветствую, {name}!</h3>
           </div>
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ display: "flex", justifyContent: "space-around" }}>
+            <div>
+              <span>Искать по отделам:</span>
+              <br />
+              <br />
+              <input className="inputText" type="text" defaultValue=""></input>
+            </div>
+            {this.props.user.level === 3 &&  <input className="button" type="button" value="Добавить сотрудника"></input>}
             <input className="button" type="button" value={countTask}></input>
             <input className="button" type="button" value="Выйти"></input>
-          </div>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <span>Искать по отделам:</span>
-            <br />
-            <input className="inputText" type="text" defaultValue=""></input>
           </div>
         </div>
       )
