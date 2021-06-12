@@ -24,6 +24,10 @@ class Employes extends React.PureComponent {
     user: PropTypes.object, // какой юзер зашел
   };
 
+  state ={
+    
+  }
+
   render() {
     let employes; //список сотрудников
     if (this.props.user) {

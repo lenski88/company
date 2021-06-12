@@ -7,8 +7,13 @@ class Header extends React.PureComponent {
   static propTypes = {
     login: PropTypes.bool.isRequired,
     user: PropTypes.object,
-    cbExit: PropTypes.func
+    cbExit: PropTypes.func,
+    cbSearchDepartment: PropTypes.func
   };
+
+  state = {
+    
+  }
 
   
   exit = () => {
@@ -17,10 +22,16 @@ class Header extends React.PureComponent {
     })
   }
 
+  
+selectDep = (eo) => {
+  this.props.cbSearchDepartment({
+   select: eo.target.value
+  })
+}
 
   render() {
     let name; // имя юзера
-    let countTask; // количество задач на кнопке
+    let countTask; // количество задач на кнопке; равно длине массива задач
     if (this.props.user) {
       name = this.props.user.name;
       name = name.split(" ");
@@ -39,7 +50,16 @@ class Header extends React.PureComponent {
               <span>Искать по отделам:</span>
               <br />
               <br />
-              <input className="inputText" type="text" defaultValue=""></input>
+              <select className="inputText" onChange={this.selectDep}>
+                <option value='Все'>Все</option>
+                <option value='Руководство'>Руководство</option>
+                <option value='Отдел закупок'>Отдел закупок</option>
+                <option value='Отдел продаж'>Отдел продаж</option>
+                <option value='Транспортный отдел'>Транспортный отдел</option>
+                <option value='Бухгалтерия' >Бухгалтерия</option>
+                <option value='Отдел кадров'>Отдел кадров</option>
+                <option value='Складское хозяйство'>Складское хозяйство</option>
+              </select>
             </div>
             {this.props.user.level === 3 &&  <input className="button" type="button" value="Добавить сотрудника"></input>}
             <input className="button" type="button" value={countTask}></input>

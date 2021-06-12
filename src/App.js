@@ -11,6 +11,7 @@ class App extends React.PureComponent {
     userInfo: "",
     employes: [],
     login: false,
+    filterEmployes:[]
   };
 
   componentDidMount() {
@@ -57,10 +58,25 @@ class App extends React.PureComponent {
   };
 
   exit = () => {
-    this.setState ({
-      login: !this.state.login
-    })
-  }
+    this.setState({
+      login: !this.state.login,
+    });
+  };
+
+  searchDepartment = (value) => {
+   if(value.select === 'Все') {
+     
+   }
+        let employes = this.state.employes;
+        employes = employes.slice();
+        employes = this.state.employes.filter((i) => {
+          return i.department === value.select;
+        });
+        console.log(employes);
+        this.setState({
+          filterEmployes: employes,
+        });
+  };
 
   render() {
     return (
@@ -70,7 +86,12 @@ class App extends React.PureComponent {
           login={this.state.login}
           cbGetUser={this.getUser}
         />
-        <Header user={this.state.userInfo.user} login={this.state.login} cbExit={this.exit} />
+        <Header
+          user={this.state.userInfo.user}
+          login={this.state.login}
+          cbExit={this.exit}
+          cbSearchDepartment={this.searchDepartment}
+        />
         <Employes
           user={this.state.userInfo.user}
           employes={this.state.employes}
