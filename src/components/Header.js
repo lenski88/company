@@ -1,17 +1,40 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import "./Header.css";
 
 class Header extends React.PureComponent {
+  static propTypes = {
+    login: PropTypes.bool.isRequired,
+    user: PropTypes.object,
+  };
   render() {
-    let data = new Date();
-    data = data.toLocaleDateString();
-    
+    let name; // имя юзера
+    let countTask; // количество задач на кнопке
+    if (this.props.user) {
+      name = this.props.user.name;
+      name = name.split(" ");
+      name = name[1];
+
+      countTask = `Мои задачи [${this.props.user.task.length}]`;
+    }
     return (
-      <div className="Control">
-        <span style={{margin:'0.5em' }}>{data}</span>
-        <h1 style={{ textAlign: "center" }}>Приветствую, user!</h1>
-      </div>
+      this.props.login && (
+        <div className="Control">
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <h3>Приветствую, {name}!</h3>
+          </div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <input className="button" type="button" value={countTask}></input>
+            <input className="button" type="button" value="Выйти"></input>
+          </div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <span>Искать по отделам:</span>
+            <br />
+            <input className="inputText" type="text" defaultValue=""></input>
+          </div>
+        </div>
+      )
     );
   }
 }

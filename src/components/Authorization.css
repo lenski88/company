@@ -1,0 +1,17 @@
+.Authorization {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 0.2em solid  #fbfc55;
+  padding: 3em;
+  margin-top:25vh
+}
+
+.Authorization .inputText {
+    border-color: #fbfc55;
+    background-color: #fbfc55 ;
+    color:#0301a8;
+    font-family:  'Press Start 2P', cursive;
+    padding: 0.3em;
+}

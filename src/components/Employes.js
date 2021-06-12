@@ -1,73 +1,53 @@
 import React from "react";
-import isoFetch from "isomorphic-fetch";
+import PropTypes from "prop-types";
 
 import "./Employes.css";
 
 class Employes extends React.PureComponent {
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    this.loadData();
-  }
-
-  state = {
-    dataReady: false,
-    name: "???",
-    employes: [],
-  };
-
-  fetchError = (errorMessage) => {
-    console.log("dfasdf");
-  };
-
-  fetchSuccess = (loadedData) => {
-    console.log(loadedData);
-    this.setState({
-      dataReady: true,
-      employes: JSON.parse(loadedData.result),
-    });
-  };
-
-  loadData = () => {
-    let sp = new URLSearchParams();
-    sp.append("f", "READ");
-    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
-
-    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
-      method: "POST",
-      body: sp,
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error("fetch error " + response.status);
-        else return response.json();
+  static propTypes = {
+    employes: PropTypes.arrayOf(
+      /* массив сотрудников */
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        login: PropTypes.string.isRequired,
+        password: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        phone: PropTypes.string.isRequired,
+        department: PropTypes.string.isRequired,
+        position: PropTypes.string.isRequired,
+        employmentDate: PropTypes.string.isRequired,
+        task: PropTypes.array.isRequired,
       })
-      .then((data) => {
-        this.fetchSuccess(data);
-      })
-      .catch((error) => {
-        this.fetchError(error.message);
-      });
+    ),
+    login: PropTypes.bool.isRequired,
+    user: PropTypes.object  // какой юзер зашел
   };
 
   render() {
-    let employes = this.state.employes.map((emp) => {
+    console.log(this.props.employes);
+    let employes = this.props.employes.map((emp) => {
       return (
         <div className="ListEmployes" key={emp.id}>
-          {emp.name}
+          <h3>{emp.name}</h3>
+          <br/>
+          {emp.department}
           <br />
-          Должность: {emp.position}
+          <br />
+          {emp.position}
+          <br />
           <br />
           <button className="button">Информация</button>
-          <button className="button">Добавить задачу</button>
+          <button className="button">Поставить задачу</button>
           <button className="button">Изменить</button>
           <button className="button">Удалить</button>
         </div>
       );
     });
 
-    return <div className='WrapperEmployes'>{employes}</div>;
+    return (
+      this.props.login && <div className="WrapperEmployes">{employes}</div>
+    );
   }
 }
 

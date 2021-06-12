@@ -1,9 +1,17 @@
 .Control {
     position: fixed;
-    height:10em;
-    width: 100em;
-    border: 0.1em  solid;
+    height:20%;
+    width: 100%;
+    border: 0.1em solid;
     color: #fbfc55;
     background-color: #0301a8;
     z-Index: 1;
+}
+
+.Control .inputText {
+    border-color: #fbfc55;
+    background-color: #fbfc55 ;
+    color:#0301a8;
+    font-family:  'Press Start 2P', cursive;
+    padding: 0.3em;
 }

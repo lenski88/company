@@ -1,6 +1,6 @@
 .WrapperEmployes {
   position: absolute;
-  left: 33%;
+  left: 25%;
   top: 11em;
 }
 
@@ -9,7 +9,6 @@
   color: #fbfc55;
   text-align: center;
   font-size: 1.5em;
-  font-family: "Microsoft Sans Serif";
   margin: 0.2em;
   border: 0.1em solid;
   padding: 0.3em;
@@ -22,7 +21,10 @@
   color: #0301a8;
   background-color: #fbfc55;
   border: "none";
-  font-weight: bold
+  margin:0.9em;
+  padding:0.9em;
+  font-weight: bold;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .button:hover {
