@@ -8,7 +8,7 @@ class Employes extends React.PureComponent {
     employes: PropTypes.arrayOf(
       /* массив сотрудников */
       PropTypes.shape({
-        id: PropTypes.number.isRequired, // id сотрудника 
+        id: PropTypes.number.isRequired, // id сотрудника
         login: PropTypes.string.isRequired, // логин для входа
         level: PropTypes.number.isRequired, // уровень доступа 1-низший, 2 - для начальников отделов, 3 - для руководства
         name: PropTypes.string.isRequired, // ФИО
@@ -22,35 +22,64 @@ class Employes extends React.PureComponent {
     ),
     login: PropTypes.bool.isRequired,
     user: PropTypes.object, // какой юзер зашел
+    filterEmployes: PropTypes.array.isRequired,
+    workMode: PropTypes.number.isRequired,
   };
 
-  state ={
-    
-  }
+  state = {};
 
   render() {
     let employes; //список сотрудников
     if (this.props.user) {
       let user = this.props.user;
-
-      employes = this.props.employes.map((emp) => {
-        if (emp.id !== user.id) {
-          return (
-            <div className="ListEmployes" key={emp.id}>
-              <p>{emp.name}</p>
-              <p>{emp.department}</p>
-              <p>{emp.position}</p>
-              <br />
-              <button className="button">Информация</button>
-              {user.level > 1 && (
-                <button className="button">Поставить задачу</button>
-              )}
-              {user.level === 3 && <button className="button">Изменить</button>}
-              {user.level === 3 && <button className="button">Удалить</button>}
-            </div>
-          );
-        }
-      });
+      if (this.props.workMode === 1) {
+        employes = this.props.employes.map((emp) => {
+          if (emp.id !== user.id) {
+            return (
+              <div className="ListEmployes" key={emp.id}>
+                <p>{emp.name}</p>
+                <p>{emp.department}</p>
+                <p>{emp.position}</p>
+                <br />
+                <button className="button">Информация</button>
+                {user.level > 1 && (
+                  <button className="button">Поставить задачу</button>
+                )}
+                {user.level === 3 && (
+                  <button className="button">Изменить</button>
+                )}
+                {user.level === 3 && (
+                  <button className="button">Удалить</button>
+                )}
+              </div>
+            );
+          }
+        });
+      }
+      if (this.props.workMode === 2) {
+        employes = this.props.filterEmployes.map((emp) => {
+          if (emp.id !== user.id) {
+            return (
+              <div className="ListEmployes" key={emp.id}>
+                <p>{emp.name}</p>
+                <p>{emp.department}</p>
+                <p>{emp.position}</p>
+                <br />
+                <button className="button">Информация</button>
+                {user.level > 1 && (
+                  <button className="button">Поставить задачу</button>
+                )}
+                {user.level === 3 && (
+                  <button className="button">Изменить</button>
+                )}
+                {user.level === 3 && (
+                  <button className="button">Удалить</button>
+                )}
+              </div>
+            );
+          }
+        });
+      }
     }
 
     return (

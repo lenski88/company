@@ -11,7 +11,8 @@ class App extends React.PureComponent {
     userInfo: "",
     employes: [],
     login: false,
-    filterEmployes:[]
+    filterEmployes: [],
+    workMode: 1, // 1 - отобразить всех сотрудников, 2 - отобразить отфильтрованный список по отделам
   };
 
   componentDidMount() {
@@ -64,18 +65,21 @@ class App extends React.PureComponent {
   };
 
   searchDepartment = (value) => {
-   if(value.select === 'Все') {
-     
-   }
-        let employes = this.state.employes;
-        employes = employes.slice();
-        employes = this.state.employes.filter((i) => {
-          return i.department === value.select;
-        });
-        console.log(employes);
-        this.setState({
-          filterEmployes: employes,
-        });
+    if (value.select === "Все") {
+      this.setState({
+        workMode: 1,
+      });
+    } else {
+      let employes = this.state.employes;
+      employes = employes.slice();
+      employes = this.state.employes.filter((i) => {
+        return i.department === value.select;
+      });
+      this.setState({
+        filterEmployes: employes,
+        workMode: 2,
+      });
+    }
   };
 
   render() {
@@ -95,6 +99,8 @@ class App extends React.PureComponent {
         <Employes
           user={this.state.userInfo.user}
           employes={this.state.employes}
+          filterEmployes={this.state.filterEmployes}
+          workMode={this.state.workMode}
           login={this.state.login}
         />
       </div>
