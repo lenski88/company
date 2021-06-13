@@ -32,54 +32,29 @@ class Employes extends React.PureComponent {
     let employes; //список сотрудников
     if (this.props.user) {
       let user = this.props.user;
-      if (this.props.workMode === 1) {
-        employes = this.props.employes.map((emp) => {
-          if (emp.id !== user.id) {
-            return (
-              <div className="ListEmployes" key={emp.id}>
-                <p>{emp.name}</p>
-                <p>{emp.department}</p>
-                <p>{emp.position}</p>
-                <br />
-                <button className="button">Информация</button>
-                {user.level > 1 && (
-                  <button className="button">Поставить задачу</button>
-                )}
-                {user.level === 3 && (
-                  <button className="button">Изменить</button>
-                )}
-                {user.level === 3 && (
-                  <button className="button">Удалить</button>
-                )}
-              </div>
-            );
-          }
-        });
-      }
-      if (this.props.workMode === 2) {
-        employes = this.props.filterEmployes.map((emp) => {
-          if (emp.id !== user.id) {
-            return (
-              <div className="ListEmployes" key={emp.id}>
-                <p>{emp.name}</p>
-                <p>{emp.department}</p>
-                <p>{emp.position}</p>
-                <br />
-                <button className="button">Информация</button>
-                {user.level > 1 && (
-                  <button className="button">Поставить задачу</button>
-                )}
-                {user.level === 3 && (
-                  <button className="button">Изменить</button>
-                )}
-                {user.level === 3 && (
-                  <button className="button">Удалить</button>
-                )}
-              </div>
-            );
-          }
-        });
-      }
+      let employesList; // какой список сотрудников будет отрендерен: workMode = 1 - все, workMоde = 2 - отфильтрованный
+      this.props.workMode === 1
+        ? (employesList = this.props.employes)
+        : (employesList = this.props.filterEmployes);
+
+      employes = employesList.map((emp) => {
+        if (emp.id !== user.id) {
+          return (
+            <div className="ListEmployes" key={emp.id}>
+              <p>{emp.name}</p>
+              <p>{emp.department}</p>
+              <p>{emp.position}</p>
+              <br />
+              <button className="button">Информация</button>
+              {user.level > 1 && (
+                <button className="button">Поставить задачу</button>
+              )}
+              {user.level === 3 && <button className="button">Изменить</button>}
+              {user.level === 3 && <button className="button">Удалить</button>}
+            </div>
+          );
+        }
+      });
     }
 
     return (
