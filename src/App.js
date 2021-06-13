@@ -82,6 +82,17 @@ class App extends React.PureComponent {
     }
   };
 
+  newEmpPush = (newEmp) => {
+  console.log(newEmp)
+   let employes = this.state.employes;
+
+  employes.push(newEmp)
+   console.log(employes)
+    this.setState({
+      employes: employes
+    })
+  }
+
   render() {
     return (
       <div className="wrapper">
@@ -91,10 +102,12 @@ class App extends React.PureComponent {
           cbGetUser={this.getUser}
         />
         <Header
+          employes={this.state.employes}
           user={this.state.userInfo.user}
           login={this.state.login}
           cbExit={this.exit}
           cbSearchDepartment={this.searchDepartment}
+          cbNewEmpPush={this.newEmpPush}
         />
         <Employes
           user={this.state.userInfo.user}

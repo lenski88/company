@@ -6,7 +6,7 @@ import "./Authorization.css";
 class Authorization extends React.PureComponent {
   static propTypes = {
     employes: PropTypes.array.isRequired /* массив сотрудников */,
-    login:
+    login: 
     PropTypes.bool.isRequired /* прошла ли авторизация; по умолчанию false */,
     cbGetUser: PropTypes.func,
   };
@@ -15,7 +15,6 @@ class Authorization extends React.PureComponent {
     login: this.props.login,
     nameUser: "",
     errName: "",
-    errPassword: "",
     button: false,
   };
 

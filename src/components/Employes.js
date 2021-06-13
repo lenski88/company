@@ -16,7 +16,6 @@ class Employes extends React.PureComponent {
         phone: PropTypes.string.isRequired, // номер телефона
         department: PropTypes.string.isRequired, // отдел
         position: PropTypes.string.isRequired, // должность
-        employmentDate: PropTypes.string.isRequired, // дата трудоустройства
         task: PropTypes.array.isRequired, // массив задач
       })
     ),
