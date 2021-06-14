@@ -17,10 +17,12 @@ class App extends React.PureComponent {
 
   componentDidMount() {
     this.loadData();
+    console.log("sdfasdf  ")
   }
 
   fetchError = (errorMessage) => {
-    alert("Что-то пошло не так...");
+    this.loadData();
+    console.log('Что-то произошло')
   };
 
   fetchSuccess = (loadedData) => {
@@ -48,6 +50,7 @@ class App extends React.PureComponent {
       })
       .catch((error) => {
         this.fetchError(error.message);
+        console.log("read")
       });
   };
 
@@ -83,15 +86,33 @@ class App extends React.PureComponent {
   };
 
   newEmpPush = (newEmp) => {
-  console.log(newEmp)
-   let employes = this.state.employes;
-
-  employes.push(newEmp)
-   console.log(employes)
+    let employes = this.state.employes;
+    employes.push(newEmp)
     this.setState({
-      employes: employes
+      employes: employes,
+    });
+
+    let updatePassword = Math.random()
+    let sp = new URLSearchParams();
+    sp.append("f", "LOCKGET");
+    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
+    sp.append("p",updatePassword)
+
+    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
+      method: "POST",
+      body: sp,
     })
-  }
+    
+    sp.append("f", "UPDATE");
+    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
+    sp.append("p",updatePassword)
+    sp.append("v",JSON.stringify(employes))
+  
+    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
+      method: "POST",
+      body: sp,
+    })
+  };
 
   render() {
     return (
