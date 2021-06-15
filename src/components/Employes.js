@@ -20,9 +20,9 @@ class Employes extends React.PureComponent {
       })
     ),
     login: PropTypes.bool.isRequired,
-    user: PropTypes.object, // какой юзер зашел
     filterEmployes: PropTypes.array.isRequired,
     workMode: PropTypes.number.isRequired,
+    isOpenWindowInHeader: PropTypes.number,
   };
 
   state = {};
@@ -57,7 +57,17 @@ class Employes extends React.PureComponent {
     }
 
     return (
-      this.props.login && <div className="WrapperEmployes">{employes}</div>
+      this.props.login && (
+        <div
+          className={
+            this.props.isOpenWindowInHeader
+              ? "WrapperEmployes"
+              : "NoWrapperEmployes"
+          }
+        >
+          {employes}
+        </div>
+      )
     );
   }
 }

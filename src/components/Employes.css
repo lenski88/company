@@ -4,9 +4,13 @@
   flex-flow: column wrap;
   align-items: center;
   position:absolute;
-  top: 11em;
+  top: 20%;
   width:100%;
   z-index: 1;
+}
+
+.NoWrapperEmployes {
+display:none
 }
 
 .WrapperEmployes .ListEmployes {

@@ -6,8 +6,8 @@ import "./Authorization.css";
 class Authorization extends React.PureComponent {
   static propTypes = {
     employes: PropTypes.array.isRequired /* массив сотрудников */,
-    login: 
-    PropTypes.bool.isRequired /* прошла ли авторизация; по умолчанию false */,
+    login:
+      PropTypes.bool.isRequired /* прошла ли авторизация; по умолчанию false */,
     cbGetUser: PropTypes.func,
   };
 
@@ -47,12 +47,10 @@ class Authorization extends React.PureComponent {
       let user = arrayNames.find((i) => {
         return name === i.login;
       });
-      this.props.cbGetUser({
-        user: user,
-      });
+      this.props.cbGetUser(user);
       this.setState({
-        nameUser:'',
-        login: this.props.login
+        nameUser: "",
+        login: this.props.login,
       });
     }
   };
@@ -75,7 +73,7 @@ class Authorization extends React.PureComponent {
           <span>{this.state.errName}</span>
           <br />
           <br />
-          { this.state.nameUser &&
+          {this.state.nameUser && (
             <input
               className="button"
               type="button"
@@ -83,7 +81,7 @@ class Authorization extends React.PureComponent {
               value="Войти"
               disabled={this.state.button}
             ></input>
-          }
+          )}
         </div>
       )
     );

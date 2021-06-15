@@ -6,7 +6,7 @@ import "./AddNewEmp.css";
 class AddNewEmp extends React.PureComponent {
   static propTypes = {
     employes: PropTypes.array.isRequired,
-    cbExit: PropTypes.func,
+    cbExitAdd: PropTypes.func,
     cbAddEmp: PropTypes.func,
   };
 
@@ -28,8 +28,8 @@ class AddNewEmp extends React.PureComponent {
     lastId: this.props.employes.length,
   };
 
-  exit = () => {
-    this.props.cbExit();
+  exitAdd = () => {
+    this.props.cbExitAdd();
   };
 
   setNewLogin = (eo) => {
@@ -55,7 +55,7 @@ class AddNewEmp extends React.PureComponent {
     }
   };
   setNewLevel = (eo) => {
-    this.setState({ newLevel: eo.target.value });
+    this.setState({ newLevel: Number(eo.target.value) });
   };
   setNewFIO = (eo) => {
     this.setState({ newFIO: eo.target.value });
@@ -79,8 +79,8 @@ class AddNewEmp extends React.PureComponent {
     this.setState({ newDepartment: eo.target.value });
   };
   setNewPosition = (eo) => {
-    this.setState({ newPosition: eo.target.value.trim() });
-    let regExp = /^[А-ЯЁ][а-яё]+$/;
+    this.setState({ newPosition: eo.target.value });
+    let regExp = /^[А-ЯЁ].*/;
     if (!regExp.test(eo.target.value)) {
       this.setState({
         errPosition: "Первая буква заглавная; только кириллица",
@@ -157,7 +157,7 @@ class AddNewEmp extends React.PureComponent {
       position: this.state.newPosition,
       task: [],
     });
-    this.props.cbExit();
+    this.props.cbExitAdd();
   };
 
   render() {
@@ -284,7 +284,7 @@ class AddNewEmp extends React.PureComponent {
             className="button"
             type="button"
             value="Выйти без сохранения"
-            onPointerDown={this.exit}
+            onPointerDown={this.exitAdd}
           ></input>
         </div>
       </div>

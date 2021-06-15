@@ -1,0 +1,8 @@
+.MyTask {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 12vh;
+    background-color: #0301a8;
+    border: 0.1em solid;
+}
