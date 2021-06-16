@@ -58,7 +58,7 @@ class Authorization extends React.PureComponent {
   render() {
     return (
       !this.state.login && (
-        <div className="Authorization">
+        <div className={!this.props.login?"Authorization": "NoAuthorization"}>
           <label>Введите логин:</label>
           <br />
           <input

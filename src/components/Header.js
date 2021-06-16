@@ -13,35 +13,34 @@ class Header extends React.PureComponent {
     cbExit: PropTypes.func,
     cbSearchDepartment: PropTypes.func,
     cbNewEmpPush: PropTypes.func,
-    cbDeleteTask:PropTypes.func,
-    cbIsOpen:PropTypes.func
+    cbDeleteTask: PropTypes.func,
+    cbIsOpen: PropTypes.func,
   };
 
   state = {
     addEmp: 0, // 0 - по умолчанию, 1 - добавление нового сотрудника, 2 - мои задачи
-    openWindow:0 // 0 - открыто "добавить сотрудника" или "мои задачи", 1 - ничего не открыто
+    openWindow: 0, // 0 - открыто "добавить сотрудника" или "мои задачи", 1 - ничего не открыто
   };
 
   exit = () => {
     this.props.cbExit({
-       login: false
+      login: false,
     });
   };
 
   exitAdd = () => {
     this.setState({
       addEmp: 0,
-      openWindow:0
+      openWindow: 0,
     });
-    this.isOpen()
-  }
+    this.isOpen();
+  };
 
   //открыто ли какое-нибудь окно
 
   isOpen = () => {
-    this.props.cbIsOpen(this.state.openWindow)
-  }
-
+    this.props.cbIsOpen(this.state.openWindow);
+  };
 
   selectDep = (eo) => {
     this.props.cbSearchDepartment({ select: eo.target.value });
@@ -50,17 +49,17 @@ class Header extends React.PureComponent {
   addEmp = () => {
     this.setState({
       addEmp: 1,
-      openWindow:1
+      openWindow: 1,
     });
-    this.isOpen()
+    this.isOpen();
   };
 
   exitTask = () => {
     this.setState({
       addEmp: 0,
-      openWindow:0
+      openWindow: 0,
     });
-    this.isOpen()
+    this.isOpen();
   };
 
   newEmp = (newEmp) => {
@@ -70,18 +69,17 @@ class Header extends React.PureComponent {
   myTask = () => {
     this.setState({
       addEmp: 2,
-      openWindow:1
+      openWindow: 1,
     });
-    this.isOpen()
+    this.isOpen();
   };
 
   deleteTask = (idTask) => {
-    this.props.cbDeleteTask(idTask)
-  }
+    this.props.cbDeleteTask(idTask);
+  };
 
-  
   render() {
-    console.log('header')
+    console.log("header");
     let name; // имя юзера
     let countTask; // количество задач на кнопке; равно длине массива задач
     if (this.props.user) {
@@ -149,7 +147,13 @@ class Header extends React.PureComponent {
               cbAddEmp={this.newEmp}
             />
           )}
-          {this.state.addEmp === 2 && <MyTask user={this.props.user} cbExitTask={this.exitTask} cbDeleteTask={this.deleteTask} />}
+          {this.state.addEmp === 2 && (
+            <MyTask
+              user={this.props.user}
+              cbExitTask={this.exitTask}
+              cbDeleteTask={this.deleteTask}
+            />
+          )}
         </div>
       )
     );

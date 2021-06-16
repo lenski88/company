@@ -6,6 +6,7 @@ import Employes from "./components/Employes";
 import Header from "./components/Header";
 
 class App extends React.PureComponent {
+  
   state = {
     dataReady: false,
     userInfo: "",
@@ -13,7 +14,7 @@ class App extends React.PureComponent {
     login: false,
     filterEmployes: [],
     workMode: 1, // 1 - отобразить всех сотрудников, 2 - отобразить отфильтрованный список по отделам
-    isOpenHeader: 1
+    isOpenHeader: 1,
   };
 
   componentDidMount() {
@@ -22,6 +23,8 @@ class App extends React.PureComponent {
       this.loadData();
     }, 10000); */
   }
+
+  
 
   getClassName = (obj) => {
     return Object.prototype.toString.apply(obj);
@@ -81,28 +84,25 @@ class App extends React.PureComponent {
   };
 
   fetchError = (errorMessage) => {
-    console.log("Что-то произошло");
+    console.log(errorMessage);
   };
 
   fetchSuccess = (loadedData) => {
-    let user = {} 
+    let user = {};
     let data = JSON.parse(loadedData.result);
-    /* console.log(!this.deepComp(this.state.employes, data)) */
     if (!this.deepComp(this.state.employes, data)) {
-      /* console.log("данные обновлены"); */
       this.setState({
         dataReady: true,
-        employes: data, 
+        employes: data,
       });
-      if(this.state.userInfo) {
-        console.log('Вошел')
-        console.log(data[this.state.userInfo.id])
+      if (this.state.userInfo) {
+        console.log("Вошел");
+        console.log(data[this.state.userInfo.id]);
         this.setState({
-          userInfo: data[this.state.userInfo.id]
-        })
+          userInfo: data[this.state.userInfo.id],
+        });
       }
     } else {
-      /* console.log("Обновление не требуется"); */
       return;
     }
   };
@@ -159,38 +159,10 @@ class App extends React.PureComponent {
     }
   };
 
-  /* updateData = () => {
-    let employes = this.state.employes;
-    let updatePassword = Math.random();
-    let sp = new URLSearchParams();
-    sp.append("f", "LOCKGET");
-    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
-    sp.append("p", updatePassword);
-
-    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
-      method: "POST",
-      body: sp,
-    });
-
-    sp.append("f", "UPDATE");
-    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
-    sp.append("p", updatePassword);
-    sp.append("v", JSON.stringify(employes));
-
-    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
-      method: "POST",
-      body: sp,
-    });
-    console.log('send')
-  }; */
-
   newEmpPush = (newEmp) => {
     let employes = this.state.employes;
     employes.push(newEmp);
-    this.setState({
-      employes: employes,
-    });
-    
+
     let updatePassword = Math.random();
     let sp = new URLSearchParams();
     sp.append("f", "LOCKGET");
@@ -200,7 +172,18 @@ class App extends React.PureComponent {
     isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
       method: "POST",
       body: sp,
-    });
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("fetch error " + response.status);
+      })
+      .then(() => {
+        this.setState({
+          employes: employes,
+        });
+      })
+      .catch((error) => {
+        alert(error);
+      });
 
     sp.append("f", "UPDATE");
     sp.append("n", "LENSKI_COMPANY_EMPLOYES");
@@ -210,27 +193,34 @@ class App extends React.PureComponent {
     isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
       method: "POST",
       body: sp,
-    });
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("fetch error " + response.status);
+      })
+      .then(() => {
+        alert("Добавлен новый сотрудник");
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
 
   deleteTask = (idTask) => {
-    console.log(idTask)
+    console.log(idTask);
     let userTask = this.state.userInfo.task;
-    userTask = userTask.filter((i) => { 
+    userTask = userTask.filter((i) => {
       return i.id !== Number(idTask);
     });
     let user = this.state.userInfo;
     let user2 = user;
-    user = {...user,task:userTask};
+    user = { ...user, task: userTask };
 
     let employes = this.state.employes;
     employes = employes.slice();
-    employes.splice(employes[this.state.userInfo.id],1,{...employes[this.state.userInfo.id],task:userTask})
-
-    this.setState({
-      employes: employes,
-      userInfo: user
-    })
+    employes.splice(employes[this.state.userInfo.id], 1, {
+      ...employes[this.state.userInfo.id],
+      task: userTask,
+    });
 
     let updatePassword = Math.random();
     let sp = new URLSearchParams();
@@ -238,10 +228,22 @@ class App extends React.PureComponent {
     sp.append("n", "LENSKI_COMPANY_EMPLOYES");
     sp.append("p", updatePassword);
 
-    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php",  {
+    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
       method: "POST",
       body: sp,
-    });
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("fetch error " + response.status);
+      })
+      .then(() => {
+        this.setState({
+          employes: employes,
+          userInfo: user,
+        });
+      })
+      .catch((error) => {
+        alert(error);
+      });
 
     sp.append("f", "UPDATE");
     sp.append("n", "LENSKI_COMPANY_EMPLOYES");
@@ -251,24 +253,39 @@ class App extends React.PureComponent {
     isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
       method: "POST",
       body: sp,
-    });
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("fetch error " + response.status);
+        else return response.json();
+      })
+      .then(() => {
+        alert("Удалено");
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
 
   isOpenWindowInHeader = (value) => {
     this.setState({
-      isOpenHeader: value
-    })
-  }
+      isOpenHeader: value,
+    });
+  };
 
   render() {
-    console.log('app')
     return (
       <div className="wrapper">
-        <Authorization
-          employes={this.state.employes}
-          login={this.state.login}
-          cbGetUser={this.getUser}
-        />
+        {!this.state.dataReady ? (
+          <div style={{marginTop:'30vh'}}>
+            <h2>Загрузка данных...</h2>
+          </div>
+        ) : (
+          <Authorization
+            employes={this.state.employes}
+            login={this.state.login}
+            cbGetUser={this.getUser}
+          />
+        )}
         <Header
           employes={this.state.employes}
           user={this.state.userInfo}

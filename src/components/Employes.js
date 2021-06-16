@@ -25,10 +25,44 @@ class Employes extends React.PureComponent {
     isOpenWindowInHeader: PropTypes.number,
   };
 
-  state = {};
+  state = {
+    employes: this.props.employes,
+    employeeInfo: [],
+    infoWindow: 0,
+  };
+
+  componentDidUpdate(oldProps) {
+    if (this.props.login !== oldProps.login) {
+      this.setState({
+        infoWindow: 0,
+      });
+    }
+  }
+
+  info = (eo) => {
+    let employes = this.props.employes;
+    let employeeInfo;
+    console.log(eo.target.name);
+    employeeInfo = employes.filter((i) => {
+      return i.id === Number(eo.target.name);
+    });
+    console.log(employes);
+    this.setState({
+      employeeInfo: employeeInfo,
+      infoWindow: 1,
+    });
+  };
+
+  exitInfo = () => {
+    this.setState({
+      infoWindow: 0,
+    });
+  };
 
   render() {
+    console.log('employes')
     let employes; //список сотрудников
+    let employeeInfo; // содержит хеш с инфо о сотруднике
     if (this.props.user) {
       let user = this.props.user;
       let employesList; // какой список сотрудников будет отрендерен: workMode = 1 - все, workMоde = 2 - отфильтрованный
@@ -44,7 +78,13 @@ class Employes extends React.PureComponent {
               <p>{emp.department}</p>
               <p>{emp.position}</p>
               <br />
-              <button className="button">Информация</button>
+              <button
+                className="button"
+                name={emp.id}
+                onPointerDown={this.info}
+              >
+                Информация
+              </button>
               {user.level > 1 && (
                 <button className="button">Поставить задачу</button>
               )}
@@ -53,6 +93,26 @@ class Employes extends React.PureComponent {
             </div>
           );
         }
+      });
+
+      employeeInfo = this.state.employeeInfo.map((i) => {
+        return (
+          <div className="ListEmployes" key={i.id}>
+            <h2>Информация о сотруднике</h2>
+            <p>ФИО:{i.name}</p>
+            <p>Уровень доступа:{i.level}</p>
+            <p>Почта:{i.email}</p>
+            <p>Телефон:{i.phone}</p>
+            <p>Отдел:{i.department}</p>
+            <p>Дoлжность:{i.position}</p>
+            <input
+              className="button"
+              type="button"
+              value="Вернуться"
+              onPointerDown={this.exitInfo}
+            ></input>
+          </div>
+        );
       });
     }
 
@@ -65,7 +125,7 @@ class Employes extends React.PureComponent {
               : "NoWrapperEmployes"
           }
         >
-          {employes}
+          {!this.state.infoWindow ? employes : employeeInfo}
         </div>
       )
     );

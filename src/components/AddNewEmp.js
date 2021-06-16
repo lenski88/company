@@ -173,6 +173,7 @@ class AddNewEmp extends React.PureComponent {
             type="text"
             value={this.state.newLogin}
             name="login"
+            placeholder='login'
             onChange={this.setNewLogin}
             onBlur={this.validation}
           ></input>
@@ -199,6 +200,7 @@ class AddNewEmp extends React.PureComponent {
             className="inputText"
             type="text"
             name="FIO"
+            placeholder='Иванов Иван Иванович'
             value={this.state.newFIO}
             onChange={this.setNewFIO}
             onBlur={this.validation}
@@ -212,6 +214,7 @@ class AddNewEmp extends React.PureComponent {
             className="inputText"
             type="text"
             name="email"
+            placeholder='login@example.com'
             value={this.state.newEmail}
             onChange={this.setNewEmail}
             onBlur={this.validation}
@@ -225,6 +228,7 @@ class AddNewEmp extends React.PureComponent {
             className="inputText"
             type="text"
             name="phone"
+            placeholder='333333333'
             value={this.state.newPhone}
             onChange={this.setNewPhone}
             onBlur={this.validation}
@@ -256,6 +260,7 @@ class AddNewEmp extends React.PureComponent {
             className="inputText"
             type="text"
             name="position"
+            placeholder='Сотрудник отдела'
             value={this.state.newPosition}
             onChange={this.setNewPosition}
             onBlur={this.validation}
