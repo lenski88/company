@@ -78,7 +78,7 @@ class Authorization extends React.PureComponent {
               className="button"
               type="button"
               onPointerDown={this.getUser}
-              value="Войти"
+              value="[Войти]"
               disabled={this.state.button}
             ></input>
           )}

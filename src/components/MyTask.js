@@ -10,12 +10,17 @@ class MyTask extends React.PureComponent {
     cbDeleteTask: PropTypes.func,
   };
 
+  state = {};
+
   exit = () => {
     this.props.cbExitTask();
   };
 
   deleteTask = (eo) => {
-    this.props.cbDeleteTask(eo.target.name);
+    let isDelete = window.confirm("Удалить задачу?");
+    if (isDelete) {
+      this.props.cbDeleteTask(Number(eo.target.name));
+    }
   };
 
   render() {
@@ -26,19 +31,28 @@ class MyTask extends React.PureComponent {
     } else {
       listTask = this.props.user.task.map((i) => {
         return (
-          <React.Fragment key={i.id} >
-            <li style={{ marginTop: "2vh" }} >{i.task}</li>
-            Отправитель:
-            <span>{i.sender}</span>
+          <div
+            key={i.id}
+            style={{
+              margin: "2vh",
+              padding: "2vh",
+              border: "0.1em solid",            
+            }}
+          >
+            <li style={{ listStyleType: "none", wordBreak: 'break-all'}}>{i.task}</li>
+            <br />
+            <span style={{ color: "gray", fontSize: "1.5vh" }}>
+              Отправитель:{i.sender}
+            </span>
             <br />
             <input
               name={i.id}
               className="button"
               type="button"
-              value="Удалить"
+              value="[Удалить]"
               onPointerDown={this.deleteTask}
             ></input>
-          </React.Fragment>
+          </div>
         );
       });
     }
@@ -50,7 +64,7 @@ class MyTask extends React.PureComponent {
           style={{ marginLeft: "4vw" }}
           className="button"
           type="button"
-          value="Выйти"
+          value="[Выйти]"
           onPointerDown={this.exit}
         ></input>
       </div>

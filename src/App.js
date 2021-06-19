@@ -6,7 +6,6 @@ import Employes from "./components/Employes";
 import Header from "./components/Header";
 
 class App extends React.PureComponent {
-  
   state = {
     dataReady: false,
     userInfo: "",
@@ -23,8 +22,6 @@ class App extends React.PureComponent {
       this.loadData();
     }, 10000); */
   }
-
-  
 
   getClassName = (obj) => {
     return Object.prototype.toString.apply(obj);
@@ -44,7 +41,7 @@ class App extends React.PureComponent {
     let v1Class = this.getClassName(v1);
     let v2Class = this.getClassName(v2);
 
-    if (v1Class != v2Class) {
+    if (v1Class !== v2Class) {
       return false;
     }
 
@@ -58,7 +55,7 @@ class App extends React.PureComponent {
     }
 
     if (v1 instanceof Array && v2 instanceof Array) {
-      if (v1.length != v2.length) {
+      if (v1.length !== v2.length) {
         return false;
       }
       for (let i = 0; i < v1.length; i++) {
@@ -70,7 +67,7 @@ class App extends React.PureComponent {
     }
 
     if (v1 instanceof Object && v2 instanceof Object) {
-      if (Object.keys(v1).length != Object.keys(v2).length) {
+      if (Object.keys(v1).length !== Object.keys(v2).length) {
         return false;
       }
 
@@ -95,6 +92,7 @@ class App extends React.PureComponent {
         dataReady: true,
         employes: data,
       });
+      console.log('Обновлено')
       if (this.state.userInfo) {
         console.log("Вошел");
         console.log(data[this.state.userInfo.id]);
@@ -103,6 +101,7 @@ class App extends React.PureComponent {
         });
       }
     } else {
+      console.log('Не нужно обновлять')
       return;
     }
   };
@@ -206,21 +205,24 @@ class App extends React.PureComponent {
   };
 
   deleteTask = (idTask) => {
-    console.log(idTask);
     let userTask = this.state.userInfo.task;
     userTask = userTask.filter((i) => {
-      return i.id !== Number(idTask);
+      return i.id !== idTask;
     });
     let user = this.state.userInfo;
-    let user2 = user;
     user = { ...user, task: userTask };
 
     let employes = this.state.employes;
+    
+    let empIndex = employes.findIndex((i) => {
+      return i.id === user.id;
+    });
     employes = employes.slice();
-    employes.splice(employes[this.state.userInfo.id], 1, {
-      ...employes[this.state.userInfo.id],
+    employes.splice(empIndex, 1, {
+      ...user,
       task: userTask,
     });
+    console.log(employes[empIndex])
 
     let updatePassword = Math.random();
     let sp = new URLSearchParams();
@@ -259,7 +261,7 @@ class App extends React.PureComponent {
         else return response.json();
       })
       .then(() => {
-        alert("Удалено");
+        alert("Задача удалена");
       })
       .catch((error) => {
         alert(error);
@@ -272,11 +274,64 @@ class App extends React.PureComponent {
     });
   };
 
+  addNewTask = (emp) => {
+    let employes = this.state.employes;
+    let empIndex = employes.findIndex((i) => {
+      return i.id === emp.id;
+    });
+
+    employes = employes.slice();
+    employes.splice(empIndex, 1, emp);
+
+
+    let updatePassword = Math.random();
+    let sp = new URLSearchParams();
+    sp.append("f", "LOCKGET");
+    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
+    sp.append("p", updatePassword);
+
+    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
+      method: "POST",
+      body: sp,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("fetch error " + response.status);
+      })
+      .then(() => {
+        this.setState({
+          employes: employes,
+        });
+      })
+      .catch((error) => {
+        alert(error);
+      });
+
+    sp.append("f", "UPDATE");
+    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
+    sp.append("p", updatePassword);
+    sp.append("v", JSON.stringify(employes));
+
+    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
+      method: "POST",
+      body: sp,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("fetch error " + response.status);
+        else return response.json();
+      })
+      .then(() => {
+        alert("Добавлена новая задача");
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  };
+
   render() {
     return (
       <div className="wrapper">
         {!this.state.dataReady ? (
-          <div style={{marginTop:'30vh'}}>
+          <div style={{ marginTop: "30vh" }}>
             <h2>Загрузка данных...</h2>
           </div>
         ) : (
@@ -303,6 +358,7 @@ class App extends React.PureComponent {
           workMode={this.state.workMode}
           login={this.state.login}
           isOpenWindowInHeader={this.state.isOpenHeader}
+          cbNewTask={this.addNewTask}
         />
       </div>
     );

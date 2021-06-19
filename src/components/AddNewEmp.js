@@ -25,7 +25,7 @@ class AddNewEmp extends React.PureComponent {
     errPhone: "",
     errPosition: "",
 
-    lastId: this.props.employes.length,
+    lastId: this.props.employes[this.props.employes.length-1].id
   };
 
   exitAdd = () => {
@@ -146,8 +146,9 @@ class AddNewEmp extends React.PureComponent {
   };
 
   addNewEmp = () => {
+    console.log(this.state.lastId)
     this.props.cbAddEmp({
-      id: this.state.lastId,
+      id: this.state.lastId + 1,
       login: this.state.newLogin,
       level: this.state.newLevel,
       name: this.state.newFIO,
@@ -282,13 +283,13 @@ class AddNewEmp extends React.PureComponent {
           <input
             className="button"
             type="button"
-            value="Сохранить"
+            value="[Сохранить]"
             onPointerDown={this.addNewEmp}
           ></input>}
           <input
             className="button"
             type="button"
-            value="Выйти без сохранения"
+            value="[Выйти без сохранения]"
             onPointerDown={this.exitAdd}
           ></input>
         </div>

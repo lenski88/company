@@ -87,7 +87,7 @@ class Header extends React.PureComponent {
       name = name.split(" ");
       name = name[1];
 
-      countTask = `Мои задачи [${this.props.user.task.length}]`;
+      countTask = `[Мои задачи]:[${this.props.user.task.length}]`;
     }
     return (
       this.props.login && (
@@ -95,7 +95,7 @@ class Header extends React.PureComponent {
           <div style={{ display: "flex", justifyContent: "center" }}>
             <h3>Приветствую, {name}!</h3>
           </div>
-          <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <div style={{ display: "flex", flexDirection: 'row', flexWrap:'wrap', justifyContent:'center'}}>
             {!this.state.addEmp && (
               <div>
                 <span>Искать по отделам:</span>
@@ -119,7 +119,7 @@ class Header extends React.PureComponent {
               <input
                 className="button"
                 type="button"
-                value="Добавить сотрудника"
+                value="[Добавить сотрудника]"
                 onPointerDown={this.addEmp}
               ></input>
             )}
@@ -135,7 +135,7 @@ class Header extends React.PureComponent {
               <input
                 className="button"
                 type="button"
-                value="Выйти"
+                value="[Выйти]"
                 onPointerDown={this.exit}
               ></input>
             )}

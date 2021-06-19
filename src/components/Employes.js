@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import SendTask from "./SendTask";
+
 import "./Employes.css";
 
 class Employes extends React.PureComponent {
@@ -23,18 +25,22 @@ class Employes extends React.PureComponent {
     filterEmployes: PropTypes.array.isRequired,
     workMode: PropTypes.number.isRequired,
     isOpenWindowInHeader: PropTypes.number,
+    cbNewTask: PropTypes.func
   };
 
   state = {
     employes: this.props.employes,
     employeeInfo: [],
     infoWindow: 0,
+    mode: 0, // 1- добавить задачу, 2 - изменить пользователя, 3 - удачить пользователя
+    idEmpForSendTask: null, //id сотрудника, которому будет поставлена задача
   };
 
   componentDidUpdate(oldProps) {
     if (this.props.login !== oldProps.login) {
       this.setState({
         infoWindow: 0,
+        mode: 0,
       });
     }
   }
@@ -59,8 +65,23 @@ class Employes extends React.PureComponent {
     });
   };
 
+  sendTask = (eo) => {
+    this.setState({
+      mode: 1,
+      idEmpForSendTask: Number(eo.target.name),
+    });
+  };
+
+  newTask = (emp) => {
+    this.setState({
+      mode:0
+    })
+
+    this.props.cbNewTask(emp)
+  }
+
   render() {
-    console.log('employes')
+    console.log("employes");
     let employes; //список сотрудников
     let employeeInfo; // содержит хеш с инфо о сотруднике
     if (this.props.user) {
@@ -83,13 +104,27 @@ class Employes extends React.PureComponent {
                 name={emp.id}
                 onPointerDown={this.info}
               >
-                Информация
+                [Информация]
               </button>
               {user.level > 1 && (
-                <button className="button">Поставить задачу</button>
+                <button
+                  className="button"
+                  name={emp.id}
+                  onPointerDown={this.sendTask}
+                >
+                  [Поставить задачу]
+                </button>
               )}
-              {user.level === 3 && <button className="button">Изменить</button>}
-              {user.level === 3 && <button className="button">Удалить</button>}
+              {user.level === 3 && (
+                <button className="button" name={emp.id}>
+                  [Изменить]
+                </button>
+              )}
+              {user.level === 3 && (
+                <button className="button" name={emp.id}>
+                  [Удалить]
+                </button>
+              )}
             </div>
           );
         }
@@ -118,15 +153,27 @@ class Employes extends React.PureComponent {
 
     return (
       this.props.login && (
-        <div
-          className={
-            this.props.isOpenWindowInHeader
-              ? "WrapperEmployes"
-              : "NoWrapperEmployes"
-          }
-        >
-          {!this.state.infoWindow ? employes : employeeInfo}
-        </div>
+        <React.Fragment>
+          {this.state.mode === 0 && (
+            <div
+              className={
+                this.props.isOpenWindowInHeader
+                  ? "WrapperEmployes"
+                  : "NoWrapperEmployes"
+              }
+            >
+              {!this.state.infoWindow ? employes : employeeInfo}
+            </div>
+          )}
+          {this.state.mode === 1 && (
+            <SendTask
+              employes={this.props.employes}
+              user={this.props.user}
+              idEmpForSendTask={this.state.idEmpForSendTask}
+              cbNewTask={this.newTask}
+            />
+          )}
+        </React.Fragment>
       )
     );
   }
