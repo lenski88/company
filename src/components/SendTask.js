@@ -6,8 +6,9 @@ import "./SendTask.css";
 class SendTask extends React.Component {
   static propTypes = {
     employes: PropTypes.array,
-    idEmpForSendTask: PropTypes.number, ////id сотрудника, которому будет поставлена задача
+    idEmp: PropTypes.number, ////id сотрудника, которому будет поставлена задача
     cbNewTask: PropTypes.func,
+    cbExitSendTask:PropTypes.func
   };
 
   state = {
@@ -17,7 +18,7 @@ class SendTask extends React.Component {
 
   empName = () => {
     let employes = this.props.employes;
-    let idEmp = this.props.idEmpForSendTask;
+    let idEmp = this.props.idEmp;
     let emp = employes.find((i) => {
       return i.id === idEmp;
     });
@@ -41,7 +42,7 @@ class SendTask extends React.Component {
   };
 
   sendTask = () => {
-    let arrayTask = this.props.employes[this.props.idEmpForSendTask].task; //массив задач сотрудника
+    let arrayTask = this.props.employes[this.props.idEmp].task; //массив задач сотрудника
     let lastIdTask; //последний id в массиве задач
 
     arrayTask.length === 0? lastIdTask = 0:lastIdTask = arrayTask[arrayTask.length - 1].id;
@@ -52,7 +53,7 @@ class SendTask extends React.Component {
       { id: lastIdTask + 1, task: this.state.newTask, sender: sender },
     ];
 
-    let emp = this.props.employes[this.props.idEmpForSendTask]; // сотрудник с обновленным списком задач
+    let emp = this.props.employes[this.props.idEmp]; // сотрудник с обновленным списком задач
     emp = { ...emp, task: arrayTask };
 
     this.props.cbNewTask(emp);
@@ -61,6 +62,19 @@ class SendTask extends React.Component {
       newTask: "",
     });
   };
+
+  exitSendTask = () => {
+    let isExit = window.confirm("Изменения не сохранятся! Выйти?")
+    if(isExit) {
+      this.setState({
+        newTask:'',
+        emptyTask:true
+      })
+      this.props.cbExitSendTask();
+    } else {
+      return;
+    }
+  }
 
   render() {
     return (
@@ -86,7 +100,7 @@ class SendTask extends React.Component {
             onPointerDown={this.sendTask}
           ></input>
         )}
-        <input className="button" type="button" value="[Отмена]"></input>
+        <input className="button" type="button" value="[Отмена]" onPointerDown={this.exitSendTask}></input>
       </div>
     );
   }

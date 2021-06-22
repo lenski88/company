@@ -65,7 +65,8 @@ class AddNewEmp extends React.PureComponent {
   };
   setNewPhone = (eo) => {
     this.setState({ newPhone: eo.target.value.trim() });
-    if (eo.target.value.length !== 9) {
+    let regExp = /^\d+$/;
+    if (eo.target.value.length !== 9 || !regExp.test(this.state.newPhone)) {
       this.setState({
         errPhone: "Содержит 9 цифр",
       });
@@ -120,7 +121,7 @@ class AddNewEmp extends React.PureComponent {
       }
     }
     if (name === "email") {
-      let regExp = /[a-zA-Z0-9]+@[example]+\.[com]+/;
+      let regExp = /\S+@\S+\.\S+/;
       if (!regExp.test(this.state.newEmail)) {
         this.setState({
           errEmail: "Формат ввода: login@example.com",
@@ -131,22 +132,9 @@ class AddNewEmp extends React.PureComponent {
         });
       }
     }
-    if (name === "phone") {
-      let regExp = /[0-9]/;
-      if (!regExp.test(this.state.newPhone)) {
-        this.setState({
-          errPhone: "Не может быть пустым; только числа",
-        });
-      } else {
-        this.setState({
-          errPhone: "",
-        });
-      }
-    }
   };
 
   addNewEmp = () => {
-    console.log(this.state.lastId)
     this.props.cbAddEmp({
       id: this.state.lastId + 1,
       login: this.state.newLogin,

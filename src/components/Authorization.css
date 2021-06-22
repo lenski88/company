@@ -5,7 +5,8 @@
   flex-direction: column;
   border: 0.2em solid  #fbfc55;
   padding: 3em;
-  margin-top:25vh
+  margin-top:25vh;
+  box-shadow:  0.4em 0.4em  #b2b2b8e8;
 }
 
 .Authorization .inputText {

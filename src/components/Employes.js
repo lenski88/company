@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import SendTask from "./SendTask";
+import ChangeEmployee from "./ChangeEmployee";
 
 import "./Employes.css";
 
@@ -25,15 +26,18 @@ class Employes extends React.PureComponent {
     filterEmployes: PropTypes.array.isRequired,
     workMode: PropTypes.number.isRequired,
     isOpenWindowInHeader: PropTypes.number,
-    cbNewTask: PropTypes.func
+    cbNewTask: PropTypes.func,
+    cbModeEmployes: PropTypes.func,
+    cbChangeEmp:PropTypes.func
   };
 
   state = {
     employes: this.props.employes,
     employeeInfo: [],
     infoWindow: 0,
-    mode: 0, // 1- добавить задачу, 2 - изменить пользователя, 3 - удачить пользователя
-    idEmpForSendTask: null, //id сотрудника, которому будет поставлена задача
+    mode: 0, // 1- добавить задачу, 2 - изменить пользователя
+    idEmp: null, //id сотрудника, которому будет поставлена задача
+    indexEmp: null //индекс сотрудника в массиве
   };
 
   componentDidUpdate(oldProps) {
@@ -43,16 +47,15 @@ class Employes extends React.PureComponent {
         mode: 0,
       });
     }
+    this.props.cbModeEmployes(this.state.mode);
   }
 
   info = (eo) => {
     let employes = this.props.employes;
     let employeeInfo;
-    console.log(eo.target.name);
     employeeInfo = employes.filter((i) => {
       return i.id === Number(eo.target.name);
     });
-    console.log(employes);
     this.setState({
       employeeInfo: employeeInfo,
       infoWindow: 1,
@@ -68,20 +71,56 @@ class Employes extends React.PureComponent {
   sendTask = (eo) => {
     this.setState({
       mode: 1,
-      idEmpForSendTask: Number(eo.target.name),
+      idEmp: Number(eo.target.name),
     });
   };
 
   newTask = (emp) => {
     this.setState({
+      mode: 0,
+      idEmp: null,
+    });
+
+    this.props.cbNewTask(emp);
+  };
+
+  exitSendTask = () => {
+    this.setState({
+      mode: 0,
+      idEmp: null,
+    });
+  };
+
+  changeEmployee = (eo) => {
+    let employes = this.props.employes;
+    let idEmp = Number(eo.target.name)
+    let index = employes.findIndex((i) => {
+      return i.id === idEmp;
+    }); 
+    this.setState({
+      mode: 2,
+      idEmp: idEmp,
+      indexEmp: index
+    });
+  };
+
+  addChangeEmp = (emp) => {
+    this.setState({
       mode:0
     })
-
-    this.props.cbNewTask(emp)
+    this.props.cbModeEmployes(this.state.mode)
+    this.props.cbChangeEmp(emp);
   }
 
+  changeExit = () => {
+    this.setState({
+      mode:0
+    })
+    this.props.cbModeEmployes(this.state.mode)
+  }
+
+
   render() {
-    console.log("employes");
     let employes; //список сотрудников
     let employeeInfo; // содержит хеш с инфо о сотруднике
     if (this.props.user) {
@@ -96,7 +135,6 @@ class Employes extends React.PureComponent {
           return (
             <div className="ListEmployes" key={emp.id}>
               <p>{emp.name}</p>
-              <p>{emp.department}</p>
               <p>{emp.position}</p>
               <br />
               <button
@@ -116,7 +154,11 @@ class Employes extends React.PureComponent {
                 </button>
               )}
               {user.level === 3 && (
-                <button className="button" name={emp.id}>
+                <button
+                  className="button"
+                  name={emp.id}
+                  onPointerDown={this.changeEmployee}
+                >
                   [Изменить]
                 </button>
               )}
@@ -143,7 +185,7 @@ class Employes extends React.PureComponent {
             <input
               className="button"
               type="button"
-              value="Вернуться"
+              value="[Вернуться к списку]"
               onPointerDown={this.exitInfo}
             ></input>
           </div>
@@ -169,8 +211,18 @@ class Employes extends React.PureComponent {
             <SendTask
               employes={this.props.employes}
               user={this.props.user}
-              idEmpForSendTask={this.state.idEmpForSendTask}
+              idEmp={this.state.idEmp}
               cbNewTask={this.newTask}
+              cbExitSendTask={this.exitSendTask}
+            />
+          )}
+          {this.state.mode === 2 && (
+            <ChangeEmployee
+              employes={this.props.employes}
+              idEmp={this.state.idEmp}
+              indexEmp={this.state.indexEmp}
+              cbAddChangeEmp={this.addChangeEmp}
+              cbChangeExit={this.changeExit}
             />
           )}
         </React.Fragment>

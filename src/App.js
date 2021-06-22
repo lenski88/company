@@ -14,6 +14,7 @@ class App extends React.PureComponent {
     filterEmployes: [],
     workMode: 1, // 1 - отобразить всех сотрудников, 2 - отобразить отфильтрованный список по отделам
     isOpenHeader: 1,
+    modeEmployes:0
   };
 
   componentDidMount() {
@@ -85,23 +86,19 @@ class App extends React.PureComponent {
   };
 
   fetchSuccess = (loadedData) => {
-    let user = {};
+    /* let user = {}; */
     let data = JSON.parse(loadedData.result);
     if (!this.deepComp(this.state.employes, data)) {
       this.setState({
         dataReady: true,
         employes: data,
       });
-      console.log('Обновлено')
       if (this.state.userInfo) {
-        console.log("Вошел");
-        console.log(data[this.state.userInfo.id]);
         this.setState({
           userInfo: data[this.state.userInfo.id],
         });
       }
     } else {
-      console.log('Не нужно обновлять')
       return;
     }
   };
@@ -116,7 +113,7 @@ class App extends React.PureComponent {
       body: sp,
     })
       .then((response) => {
-        if (!response.ok) throw new Error("fetch error " + response.status);
+        if (!response.ok)  throw new Error("fetch error " + response.status);
         else return response.json();
       })
       .then((data) => {
@@ -174,6 +171,7 @@ class App extends React.PureComponent {
     })
       .then((response) => {
         if (!response.ok) throw new Error("fetch error " + response.status);
+        else return response.json();
       })
       .then(() => {
         this.setState({
@@ -195,6 +193,7 @@ class App extends React.PureComponent {
     })
       .then((response) => {
         if (!response.ok) throw new Error("fetch error " + response.status);
+        else return response.json();
       })
       .then(() => {
         alert("Добавлен новый сотрудник");
@@ -236,6 +235,7 @@ class App extends React.PureComponent {
     })
       .then((response) => {
         if (!response.ok) throw new Error("fetch error " + response.status);
+        else return response.json();
       })
       .then(() => {
         this.setState({
@@ -296,6 +296,7 @@ class App extends React.PureComponent {
     })
       .then((response) => {
         if (!response.ok) throw new Error("fetch error " + response.status);
+        else return response.json();
       })
       .then(() => {
         this.setState({
@@ -327,6 +328,66 @@ class App extends React.PureComponent {
       });
   };
 
+  modeEmployes = (mode) => {
+    this.setState({
+      modeEmployes: mode
+    })
+  }
+
+  changeEmp = (emp) => {
+    let employes = this.state.employes;
+    let empIndex = employes.findIndex((i) => {
+      return i.id === emp.id;
+    });
+
+    employes = employes.slice();
+    employes.splice(empIndex,1,emp)
+    
+    let updatePassword = Math.random();
+    let sp = new URLSearchParams();
+    sp.append("f", "LOCKGET");
+    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
+    sp.append("p", updatePassword);
+
+    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
+      method: "POST",
+      body: sp,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("fetch error " + response.status);
+        else return response.json();
+      })
+      .then(() => {
+        this.setState({
+          employes: employes,
+        });
+      })
+      .catch((error) => {
+        alert(error);
+      });
+
+    sp.append("f", "UPDATE");
+    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
+    sp.append("p", updatePassword);
+    sp.append("v", JSON.stringify(employes));
+
+    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
+      method: "POST",
+      body: sp,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("fetch error " + response.status);
+        else return response.json();
+      })
+      .then(() => {
+        alert("Изменения внесены");
+      })
+      .catch((error) => {
+        alert(error);
+      });
+    
+  }
+
   render() {
     return (
       <div className="wrapper">
@@ -350,6 +411,7 @@ class App extends React.PureComponent {
           cbNewEmpPush={this.newEmpPush}
           cbDeleteTask={this.deleteTask}
           cbIsOpen={this.isOpenWindowInHeader}
+          modeEmployes={this.state.modeEmployes}
         />
         <Employes
           user={this.state.userInfo}
@@ -359,6 +421,8 @@ class App extends React.PureComponent {
           login={this.state.login}
           isOpenWindowInHeader={this.state.isOpenHeader}
           cbNewTask={this.addNewTask}
+          cbModeEmployes={this.modeEmployes}
+          cbChangeEmp={this.changeEmp}
         />
       </div>
     );

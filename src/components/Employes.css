@@ -17,9 +17,10 @@ display:none
   color: #fbfc55;
   text-align: center;
   font-size: 1.5em;
-  margin: 0.2em;
+  margin: 0.5em;
   border: 0.1em solid;
   padding: 0.3em;
+  box-shadow:  0.4em 0.4em  #b2b2b8e8;
 }
 
 .button {
@@ -38,5 +39,23 @@ display:none
 .button:hover {
   color: #fbfc55;
   background-color: #0301a8;
+}
+
+@media (min-width: 1051px) {
+  .WrapperEmployes {top: 30%;}
+}
+
+@media (max-width: 616px) {
+  .WrapperEmployes {top: 50%;}
+  .WrapperEmployes .ListEmployes{width: 100%;word-break: break-all;font-size: 1em;}
+}
+
+@media (max-width: 376px) {
+  .WrapperEmployes {top: 50%;}
+  .WrapperEmployes .ListEmployes{width: 100%;word-break: break-all;font-size: 0.6em;}
+}
+
+@media (max-height: 400px) {
+  .WrapperEmployes {top: 55%;word-break: break-all;font-size: 0.6em}
 }
 

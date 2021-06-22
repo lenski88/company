@@ -1,0 +1,27 @@
+.ChangeEmp {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 14vh;
+    background-color: #0301a8;
+    border: 0.1em solid #fbfc55;
+    box-shadow:  0.4em 0.4em  #b2b2b8e8;
+  }
+  
+  .ChangeEmp .label {
+      margin-left: 1vw;
+      color:#fbfc55 
+  }
+  
+  .ChangeEmp .inputText {
+    margin: 1vh;
+    border-color: #fbfc55;
+    background-color: #fbfc55 ;
+    color:#0301a8;
+    font-family:  'Press Start 2P', cursive;
+    padding: 0.3em;
+  }
+
+  @media (max-width: 616px) {
+    .ChangeEmp {margin-top: 4vh;}
+  }

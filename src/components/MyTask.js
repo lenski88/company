@@ -36,7 +36,8 @@ class MyTask extends React.PureComponent {
             style={{
               margin: "2vh",
               padding: "2vh",
-              border: "0.1em solid",            
+              border: "0.1em solid", 
+              boxShadow:  '0.4em 0.4em  #b2b2b8e8'           
             }}
           >
             <li style={{ listStyleType: "none", wordBreak: 'break-all'}}>{i.task}</li>

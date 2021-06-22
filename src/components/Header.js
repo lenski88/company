@@ -15,6 +15,7 @@ class Header extends React.PureComponent {
     cbNewEmpPush: PropTypes.func,
     cbDeleteTask: PropTypes.func,
     cbIsOpen: PropTypes.func,
+    modeEmployes:PropTypes.number.isRequired
   };
 
   state = {
@@ -79,7 +80,6 @@ class Header extends React.PureComponent {
   };
 
   render() {
-    console.log("header");
     let name; // имя юзера
     let countTask; // количество задач на кнопке; равно длине массива задач
     if (this.props.user) {
@@ -91,11 +91,11 @@ class Header extends React.PureComponent {
     }
     return (
       this.props.login && (
-        <div className="Control">
+        <div className={this.props.modeEmployes === 0?'Control': 'NoControl'}>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <h3>Приветствую, {name}!</h3>
           </div>
-          <div style={{ display: "flex", flexDirection: 'row', flexWrap:'wrap', justifyContent:'center'}}>
+          <div  style={{ display: "flex", flexDirection: 'row', flexWrap:'wrap', justifyContent:'center'}}>
             {!this.state.addEmp && (
               <div>
                 <span>Искать по отделам:</span>

@@ -6,7 +6,6 @@
     border: 0.1em solid;
     color: #fbfc55;
     background-color: #0301a8;
-    z-Index: 2;
 }
 
  .Control .inputText {
@@ -15,4 +14,8 @@
     color:#0301a8;
     font-family:  'Press Start 2P', cursive;
     padding: 0.3em;
+}
+
+.NoControl {
+    display: none
 }
