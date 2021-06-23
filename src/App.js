@@ -14,7 +14,7 @@ class App extends React.PureComponent {
     filterEmployes: [],
     workMode: 1, // 1 - отобразить всех сотрудников, 2 - отобразить отфильтрованный список по отделам
     isOpenHeader: 1,
-    modeEmployes:0
+    modeEmployes: 0,
   };
 
   componentDidMount() {
@@ -86,7 +86,6 @@ class App extends React.PureComponent {
   };
 
   fetchSuccess = (loadedData) => {
-    /* let user = {}; */
     let data = JSON.parse(loadedData.result);
     if (!this.deepComp(this.state.employes, data)) {
       this.setState({
@@ -113,7 +112,7 @@ class App extends React.PureComponent {
       body: sp,
     })
       .then((response) => {
-        if (!response.ok)  throw new Error("fetch error " + response.status);
+        if (!response.ok) throw new Error("fetch error " + response.status);
         else return response.json();
       })
       .then((data) => {
@@ -173,11 +172,6 @@ class App extends React.PureComponent {
         if (!response.ok) throw new Error("fetch error " + response.status);
         else return response.json();
       })
-      .then(() => {
-        this.setState({
-          employes: employes,
-        });
-      })
       .catch((error) => {
         alert(error);
       });
@@ -196,6 +190,9 @@ class App extends React.PureComponent {
         else return response.json();
       })
       .then(() => {
+        this.setState({
+          employes: employes,
+        });
         alert("Добавлен новый сотрудник");
       })
       .catch((error) => {
@@ -212,7 +209,7 @@ class App extends React.PureComponent {
     user = { ...user, task: userTask };
 
     let employes = this.state.employes;
-    
+
     let empIndex = employes.findIndex((i) => {
       return i.id === user.id;
     });
@@ -221,7 +218,6 @@ class App extends React.PureComponent {
       ...user,
       task: userTask,
     });
-    console.log(employes[empIndex])
 
     let updatePassword = Math.random();
     let sp = new URLSearchParams();
@@ -236,12 +232,6 @@ class App extends React.PureComponent {
       .then((response) => {
         if (!response.ok) throw new Error("fetch error " + response.status);
         else return response.json();
-      })
-      .then(() => {
-        this.setState({
-          employes: employes,
-          userInfo: user,
-        });
       })
       .catch((error) => {
         alert(error);
@@ -261,6 +251,10 @@ class App extends React.PureComponent {
         else return response.json();
       })
       .then(() => {
+        this.setState({
+          employes: employes,
+          userInfo: user,
+        });
         alert("Задача удалена");
       })
       .catch((error) => {
@@ -283,7 +277,6 @@ class App extends React.PureComponent {
     employes = employes.slice();
     employes.splice(empIndex, 1, emp);
 
-
     let updatePassword = Math.random();
     let sp = new URLSearchParams();
     sp.append("f", "LOCKGET");
@@ -297,11 +290,6 @@ class App extends React.PureComponent {
       .then((response) => {
         if (!response.ok) throw new Error("fetch error " + response.status);
         else return response.json();
-      })
-      .then(() => {
-        this.setState({
-          employes: employes,
-        });
       })
       .catch((error) => {
         alert(error);
@@ -321,6 +309,9 @@ class App extends React.PureComponent {
         else return response.json();
       })
       .then(() => {
+        this.setState({
+          employes: employes,
+        });
         alert("Добавлена новая задача");
       })
       .catch((error) => {
@@ -330,9 +321,9 @@ class App extends React.PureComponent {
 
   modeEmployes = (mode) => {
     this.setState({
-      modeEmployes: mode
-    })
-  }
+      modeEmployes: mode,
+    });
+  };
 
   changeEmp = (emp) => {
     let employes = this.state.employes;
@@ -341,8 +332,72 @@ class App extends React.PureComponent {
     });
 
     employes = employes.slice();
-    employes.splice(empIndex,1,emp)
-    
+    employes.splice(empIndex, 1, emp);
+
+    if (!this.deepComp(this.state.employes, employes)) {
+      let updatePassword = Math.random();
+      let sp = new URLSearchParams();
+      sp.append("f", "LOCKGET");
+      sp.append("n", "LENSKI_COMPANY_EMPLOYES");
+      sp.append("p", updatePassword);
+
+      isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
+        method: "POST",
+        body: sp,
+      })
+        .then((response) => {
+          if (!response.ok) throw new Error("fetch error " + response.status);
+          else return response.json();
+        })
+        .catch((error) => {
+          alert(error);
+        });
+
+      sp.append("f", "UPDATE");
+      sp.append("n", "LENSKI_COMPANY_EMPLOYES");
+      sp.append("p", updatePassword);
+      sp.append("v", JSON.stringify(employes));
+
+      isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
+        method: "POST",
+        body: sp,
+      })
+        .then((response) => {
+          if (!response.ok) throw new Error("fetch error " + response.status);
+          else return response.json();
+        })
+        .then(() => {
+          this.setState({
+            employes: employes,
+          });
+          alert("Изменения внесены");
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    }
+  };
+
+  deleteEmp = (emp) => {
+    if (this.state.workMode === 2) {
+      let filterEmployes = this.state.filterEmployes;
+      let empIndex = filterEmployes.findIndex((i) => {
+        return i.id === emp;
+      });
+      filterEmployes = filterEmployes.slice();
+      filterEmployes.splice(empIndex, 1);
+      this.setState({
+        filterEmployes: filterEmployes,
+      });
+    }
+    let employes = this.state.employes;
+    let empIndex = employes.findIndex((i) => {
+      return i.id === emp;
+    });
+
+    employes = employes.slice();
+    employes.splice(empIndex, 1);
+
     let updatePassword = Math.random();
     let sp = new URLSearchParams();
     sp.append("f", "LOCKGET");
@@ -356,11 +411,6 @@ class App extends React.PureComponent {
       .then((response) => {
         if (!response.ok) throw new Error("fetch error " + response.status);
         else return response.json();
-      })
-      .then(() => {
-        this.setState({
-          employes: employes,
-        });
       })
       .catch((error) => {
         alert(error);
@@ -380,13 +430,15 @@ class App extends React.PureComponent {
         else return response.json();
       })
       .then(() => {
-        alert("Изменения внесены");
+        this.setState({
+          employes: employes,
+        });
+        alert("Сотрудник удален");
       })
       .catch((error) => {
         alert(error);
       });
-    
-  }
+  };
 
   render() {
     return (
@@ -423,6 +475,7 @@ class App extends React.PureComponent {
           cbNewTask={this.addNewTask}
           cbModeEmployes={this.modeEmployes}
           cbChangeEmp={this.changeEmp}
+          cbDeleteEmployee={this.deleteEmp}
         />
       </div>
     );

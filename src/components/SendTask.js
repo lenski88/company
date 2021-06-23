@@ -42,18 +42,23 @@ class SendTask extends React.Component {
   };
 
   sendTask = () => {
-    let arrayTask = this.props.employes[this.props.idEmp].task; //массив задач сотрудника
+    let empIndex = this.props.employes.findIndex((i) => {
+      return i.id === this.props.idEmp;
+    });
+    let arrayTask = this.props.employes[empIndex].task; //массив задач сотрудника
+    console.log(arrayTask)
     let lastIdTask; //последний id в массиве задач
 
-    arrayTask.length === 0? lastIdTask = 0:lastIdTask = arrayTask[arrayTask.length - 1].id;
+    arrayTask.length === 0? lastIdTask = 0:lastIdTask = arrayTask[arrayTask.length - 1].id; // если массив задач пустой
     
     let sender = this.props.user.name;
     arrayTask = [
       ...arrayTask,
       { id: lastIdTask + 1, task: this.state.newTask, sender: sender },
     ];
-
-    let emp = this.props.employes[this.props.idEmp]; // сотрудник с обновленным списком задач
+    console.log(arrayTask)
+  
+    let emp = this.props.employes[empIndex]; // сотрудник с обновленным списком задач
     emp = { ...emp, task: arrayTask };
 
     this.props.cbNewTask(emp);

@@ -28,7 +28,8 @@ class Employes extends React.PureComponent {
     isOpenWindowInHeader: PropTypes.number,
     cbNewTask: PropTypes.func,
     cbModeEmployes: PropTypes.func,
-    cbChangeEmp:PropTypes.func
+    cbChangeEmp: PropTypes.func,
+    cbDeleteEmployee: PropTypes.func,
   };
 
   state = {
@@ -37,7 +38,7 @@ class Employes extends React.PureComponent {
     infoWindow: 0,
     mode: 0, // 1- добавить задачу, 2 - изменить пользователя
     idEmp: null, //id сотрудника, которому будет поставлена задача
-    indexEmp: null //индекс сотрудника в массиве
+    indexEmp: null, //индекс сотрудника в массиве
   };
 
   componentDidUpdate(oldProps) {
@@ -93,32 +94,35 @@ class Employes extends React.PureComponent {
 
   changeEmployee = (eo) => {
     let employes = this.props.employes;
-    let idEmp = Number(eo.target.name)
+    let idEmp = Number(eo.target.name);
     let index = employes.findIndex((i) => {
       return i.id === idEmp;
-    }); 
+    });
     this.setState({
       mode: 2,
       idEmp: idEmp,
-      indexEmp: index
+      indexEmp: index,
     });
   };
 
   addChangeEmp = (emp) => {
     this.setState({
-      mode:0
-    })
-    this.props.cbModeEmployes(this.state.mode)
+      mode: 0,
+    });
+    this.props.cbModeEmployes(this.state.mode);
     this.props.cbChangeEmp(emp);
-  }
+  };
 
   changeExit = () => {
     this.setState({
-      mode:0
-    })
-    this.props.cbModeEmployes(this.state.mode)
-  }
+      mode: 0,
+    });
+    this.props.cbModeEmployes(this.state.mode);
+  };
 
+  deleteEmployee = (eo) => {
+    this.props.cbDeleteEmployee(Number(eo.target.name));
+  };
 
   render() {
     let employes; //список сотрудников
@@ -163,7 +167,11 @@ class Employes extends React.PureComponent {
                 </button>
               )}
               {user.level === 3 && (
-                <button className="button" name={emp.id}>
+                <button
+                  className="button"
+                  name={emp.id}
+                  onPointerDown={this.deleteEmployee}
+                >
                   [Удалить]
                 </button>
               )}
