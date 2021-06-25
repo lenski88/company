@@ -88,6 +88,7 @@ class ChangeEmployee extends React.PureComponent {
     this.props.cbAddChangeEmp({
       id:this.props.idEmp,
       login: this.props.employes[this.props.indexEmp].login,
+      status:this.props.employes[this.props.indexEmp].status,
       level:this.state.changeLevel,
       name: this.props.employes[this.props.indexEmp].name,
       email:this.state.changeEmail,

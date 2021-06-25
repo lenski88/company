@@ -138,6 +138,7 @@ class AddNewEmp extends React.PureComponent {
     this.props.cbAddEmp({
       id: this.state.lastId + 1,
       login: this.state.newLogin,
+      status: 0,
       level: this.state.newLevel,
       name: this.state.newFIO,
       email: this.state.newEmail,

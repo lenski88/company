@@ -41,12 +41,16 @@ class Authorization extends React.PureComponent {
   };
 
   getUser = () => {
-    if (!this.state.errName && !this.state.errPassword) {
-      let arrayNames = this.props.employes;
+    if (!this.state.errName) {
+      let employes = this.props.employes;
       let name = this.state.nameUser;
-      let user = arrayNames.find((i) => {
+      let user = employes.find((i) => {
         return name === i.login;
       });
+
+      let user2=user;
+      user = {...user,status:1}
+
       this.props.cbGetUser(user);
       this.setState({
         nameUser: "",

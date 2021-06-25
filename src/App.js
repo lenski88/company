@@ -21,7 +21,7 @@ class App extends React.PureComponent {
     this.loadData();
     /* setInterval(() => {
       this.loadData();
-    }, 10000); */
+    }, 15000); */
   }
 
   getClassName = (obj) => {
@@ -93,8 +93,14 @@ class App extends React.PureComponent {
         employes: data,
       });
       if (this.state.userInfo) {
+        let employes = this.state.employes;
+        let user = this.state.userInfo;
+        let empIndex = employes.findIndex((i) => {
+          return i.id === user.id;
+        });
+        console.log(data[empIndex])
         this.setState({
-          userInfo: data[this.state.userInfo.id],
+          userInfo: data[empIndex],
         });
       }
     } else {
@@ -127,13 +133,112 @@ class App extends React.PureComponent {
     this.setState({
       login: !this.state.login,
       userInfo: user,
+      status: 1
     });
+
+    let employes = this.state.employes;
+    let empIndex = employes.findIndex((i) => {
+      return i.id === user.id;
+    });
+    employes = employes.slice();
+    employes.splice(empIndex, 1, user);
+
+    let updatePassword = Math.random();
+    let sp = new URLSearchParams();
+    sp.append("f", "LOCKGET");
+    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
+    sp.append("p", updatePassword);
+
+    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
+      method: "POST",
+      body: sp,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("fetch error " + response.status);
+        else return response.json();
+      })
+      .catch((error) => {
+        alert(error);
+      });
+
+    sp.append("f", "UPDATE");
+    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
+    sp.append("p", updatePassword);
+    sp.append("v", JSON.stringify(employes));
+
+    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
+      method: "POST",
+      body: sp,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("fetch error " + response.status);
+        else return response.json();
+      })
+      .then(() => {
+        this.setState({
+          employes: employes,
+        });
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
 
   exit = () => {
     this.setState({
       login: !this.state.login,
     });
+
+    let employes = this.state.employes;
+    let user = this.state.userInfo;
+    let user2 = user;
+    user = {...user, status:0}
+    let empIndex = employes.findIndex((i) => {
+      return i.id === user.id;
+    });
+
+    employes = employes.slice();
+    employes.splice(empIndex,1,user)
+    
+    let updatePassword = Math.random();
+    let sp = new URLSearchParams();
+    sp.append("f", "LOCKGET");
+    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
+    sp.append("p", updatePassword);
+
+    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
+      method: "POST",
+      body: sp,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("fetch error " + response.status);
+        else return response.json();
+      })
+      .catch((error) => {
+        alert(error);
+      });
+
+    sp.append("f", "UPDATE");
+    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
+    sp.append("p", updatePassword);
+    sp.append("v", JSON.stringify(employes));
+
+    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
+      method: "POST",
+      body: sp,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("fetch error " + response.status);
+        else return response.json();
+      })
+      .then(() => {
+        this.setState({
+          employes: employes,
+        });
+      })
+      .catch((error) => {
+        alert(error);
+      });
   };
 
   searchDepartment = (value) => {
@@ -379,6 +484,12 @@ class App extends React.PureComponent {
   };
 
   deleteEmp = (emp) => {
+    let deleteUser = this.state.employes.find(i => {
+     return i.id === emp;
+    })
+    if (deleteUser.status === 1) {
+      alert('Вы не можете удалить сотрудника, который сейчас в сети')
+    } else {
     if (this.state.workMode === 2) {
       let filterEmployes = this.state.filterEmployes;
       let empIndex = filterEmployes.findIndex((i) => {
@@ -438,6 +549,7 @@ class App extends React.PureComponent {
       .catch((error) => {
         alert(error);
       });
+    }
   };
 
   render() {

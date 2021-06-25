@@ -120,6 +120,8 @@ class Employes extends React.PureComponent {
     this.props.cbModeEmployes(this.state.mode);
   };
 
+  
+
   deleteEmployee = (eo) => {
     this.props.cbDeleteEmployee(Number(eo.target.name));
   };
@@ -138,6 +140,7 @@ class Employes extends React.PureComponent {
         if (emp.id !== user.id) {
           return (
             <div className="ListEmployes" key={emp.id}>
+             {this.props.workMode === 1 && <div className={emp.status?"online":"offline"}></div>}
               <p>{emp.name}</p>
               <p>{emp.position}</p>
               <br />

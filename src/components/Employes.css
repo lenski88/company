@@ -9,6 +9,18 @@
   z-index: 1;
 }
 
+.WrapperEmployes .online {
+  width:4vw;
+  height:2vh;
+  background-color: #0fe60f;
+}
+
+.WrapperEmployes .offline {
+  width:4vw;
+  height:2vh;
+  background-color: #f12121;
+}
+
 .NoWrapperEmployes {
 display:none
 }
@@ -39,6 +51,10 @@ display:none
 .button:hover {
   color: #fbfc55;
   background-color: #0301a8;
+}
+
+.is-nav-open {
+  margin-left: 0;
 }
 
 @media (min-width: 1051px) {
