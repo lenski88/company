@@ -6,7 +6,8 @@
   position:absolute;
   top: 37%;
   width:100%;
-  z-index: 1;
+  z-index: 100;
+  overflow-x:hidden;
 }
 
 .WrapperEmployes .online {
@@ -28,11 +29,12 @@ display:none
 .WrapperEmployes .ListEmployes {
   color: #fbfc55;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1em;
   margin: 0.5em;
   border: 0.1em solid;
   padding: 0.3em;
   box-shadow:  0.4em 0.4em  #b2b2b8e8;
+  z-index: 1;
 }
 
 .button {
@@ -53,8 +55,38 @@ display:none
   background-color: #0301a8;
 }
 
-.is-nav-open {
-  margin-left: 0;
+.list-enter {
+  transform: translateX(300%);
+}
+.list-enter-active {
+  transition: .3s;
+  transform: translateX(0);
+}
+
+.list-exit {
+  transform: translateX(0);
+}
+.list-exit-active {
+  transition: .3s;
+  transform: translateX(-300%);
+}
+
+
+.info-enter {
+  transform: translateX(300%);
+}
+.info-enter-active {
+  transition: .3s;
+  transform: translateX(0); 
+}
+
+.info-exit {
+  transform: translateX(0);
+}
+.info-exit-active {
+  transition: .3s;
+  transform: translateX(-300%);
+  
 }
 
 @media (min-width: 1051px) {

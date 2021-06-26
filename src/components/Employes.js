@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import SendTask from "./SendTask";
 import ChangeEmployee from "./ChangeEmployee";
@@ -120,8 +121,6 @@ class Employes extends React.PureComponent {
     this.props.cbModeEmployes(this.state.mode);
   };
 
-  
-
   deleteEmployee = (eo) => {
     this.props.cbDeleteEmployee(Number(eo.target.name));
   };
@@ -139,8 +138,11 @@ class Employes extends React.PureComponent {
       employes = employesList.map((emp) => {
         if (emp.id !== user.id) {
           return (
-            <div className="ListEmployes" key={emp.id}>
-             {this.props.workMode === 1 && <div className={emp.status?"online":"offline"}></div>}
+            <CSSTransition classNames="list" key={emp.id} timeout={{enter: 300, exit:300}}>
+              <div className="ListEmployes"  key={emp.id}>
+              {this.props.workMode === 1 && (
+                <div className={emp.status ? "online" : "offline"}></div>
+              )}
               <p>{emp.name}</p>
               <p>{emp.position}</p>
               <br />
@@ -178,13 +180,15 @@ class Employes extends React.PureComponent {
                   [Удалить]
                 </button>
               )}
-            </div>
+              </div>
+            </CSSTransition>
           );
         }
       });
 
       employeeInfo = this.state.employeeInfo.map((i) => {
         return (
+          <CSSTransition classNames="info" key={i.id} timeout={{enter:300, exit:300}}>
           <div className="ListEmployes" key={i.id}>
             <h2>Информация о сотруднике</h2>
             <p>ФИО:{i.name}</p>
@@ -200,6 +204,7 @@ class Employes extends React.PureComponent {
               onPointerDown={this.exitInfo}
             ></input>
           </div>
+          </CSSTransition>
         );
       });
     }
@@ -208,7 +213,7 @@ class Employes extends React.PureComponent {
       this.props.login && (
         <React.Fragment>
           {this.state.mode === 0 && (
-            <div
+            <TransitionGroup component='div' 
               className={
                 this.props.isOpenWindowInHeader
                   ? "WrapperEmployes"
@@ -216,7 +221,7 @@ class Employes extends React.PureComponent {
               }
             >
               {!this.state.infoWindow ? employes : employeeInfo}
-            </div>
+            </TransitionGroup>
           )}
           {this.state.mode === 1 && (
             <SendTask

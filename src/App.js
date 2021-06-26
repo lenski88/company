@@ -98,7 +98,7 @@ class App extends React.PureComponent {
         let empIndex = employes.findIndex((i) => {
           return i.id === user.id;
         });
-        console.log(data[empIndex])
+        console.log(data[empIndex]);
         this.setState({
           userInfo: data[empIndex],
         });
@@ -133,7 +133,7 @@ class App extends React.PureComponent {
     this.setState({
       login: !this.state.login,
       userInfo: user,
-      status: 1
+      status: 1,
     });
 
     let employes = this.state.employes;
@@ -192,14 +192,14 @@ class App extends React.PureComponent {
     let employes = this.state.employes;
     let user = this.state.userInfo;
     let user2 = user;
-    user = {...user, status:0}
+    user = { ...user, status: 0 };
     let empIndex = employes.findIndex((i) => {
       return i.id === user.id;
     });
 
     employes = employes.slice();
-    employes.splice(empIndex,1,user)
-    
+    employes.splice(empIndex, 1, user);
+
     let updatePassword = Math.random();
     let sp = new URLSearchParams();
     sp.append("f", "LOCKGET");
@@ -484,71 +484,70 @@ class App extends React.PureComponent {
   };
 
   deleteEmp = (emp) => {
-    let deleteUser = this.state.employes.find(i => {
-     return i.id === emp;
-    })
-    if (deleteUser.status === 1) {
-      alert('Вы не можете удалить сотрудника, который сейчас в сети')
-    } else {
-    if (this.state.workMode === 2) {
-      let filterEmployes = this.state.filterEmployes;
-      let empIndex = filterEmployes.findIndex((i) => {
-        return i.id === emp;
-      });
-      filterEmployes = filterEmployes.slice();
-      filterEmployes.splice(empIndex, 1);
-      this.setState({
-        filterEmployes: filterEmployes,
-      });
-    }
-    let employes = this.state.employes;
-    let empIndex = employes.findIndex((i) => {
+    let deleteUser = this.state.employes.find((i) => {
       return i.id === emp;
     });
-
-    employes = employes.slice();
-    employes.splice(empIndex, 1);
-
-    let updatePassword = Math.random();
-    let sp = new URLSearchParams();
-    sp.append("f", "LOCKGET");
-    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
-    sp.append("p", updatePassword);
-
-    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
-      method: "POST",
-      body: sp,
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error("fetch error " + response.status);
-        else return response.json();
-      })
-      .catch((error) => {
-        alert(error);
-      });
-
-    sp.append("f", "UPDATE");
-    sp.append("n", "LENSKI_COMPANY_EMPLOYES");
-    sp.append("p", updatePassword);
-    sp.append("v", JSON.stringify(employes));
-
-    isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
-      method: "POST",
-      body: sp,
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error("fetch error " + response.status);
-        else return response.json();
-      })
-      .then(() => {
-        this.setState({
-          employes: employes,
+    if (deleteUser.status === 1) {
+      alert("Вы не можете удалить сотрудника, который сейчас в сети");
+    } else {
+      if (this.state.workMode === 2) {
+        let filterEmployes = this.state.filterEmployes;
+        let empIndex = filterEmployes.findIndex((i) => {
+          return i.id === emp;
         });
-        alert("Сотрудник удален");
-      })
-      .catch((error) => {
-        alert(error);
+        filterEmployes = filterEmployes.slice();
+        filterEmployes.splice(empIndex, 1);
+        this.setState({
+          filterEmployes: filterEmployes,
+        });
+      }
+      let employes = this.state.employes;
+      let empIndex = employes.findIndex((i) => {
+        return i.id === emp;
       });
+
+      employes = employes.slice();
+      employes.splice(empIndex, 1);
+
+      let updatePassword = Math.random();
+      let sp = new URLSearchParams();
+      sp.append("f", "LOCKGET");
+      sp.append("n", "LENSKI_COMPANY_EMPLOYES");
+      sp.append("p", updatePassword);
+
+      isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
+        method: "POST",
+        body: sp,
+      })
+        .then((response) => {
+          if (!response.ok) throw new Error("fetch error " + response.status);
+          else return response.json();
+        })
+        .catch((error) => {
+          alert(error);
+        });
+
+      sp.append("f", "UPDATE");
+      sp.append("n", "LENSKI_COMPANY_EMPLOYES");
+      sp.append("p", updatePassword);
+      sp.append("v", JSON.stringify(employes));
+
+      isoFetch("https://fe.it-academy.by/AjaxStringStorage2.php", {
+        method: "POST",
+        body: sp,
+      })
+        .then((response) => {
+          if (!response.ok) throw new Error("fetch error " + response.status);
+          else return response.json();
+        })
+        .then(() => {
+          this.setState({
+            employes: employes,
+          });
+        })
+        .catch((error) => {
+          alert(error);
+        });
     }
   };
 
@@ -557,7 +556,7 @@ class App extends React.PureComponent {
       <div className="wrapper">
         {!this.state.dataReady ? (
           <div style={{ marginTop: "30vh" }}>
-            <h2>Загрузка данных...</h2>
+            <div className='loader'></div>
           </div>
         ) : (
           <Authorization

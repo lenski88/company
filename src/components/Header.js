@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+
 import AddNewEmp from "./AddNewEmp";
 import MyTask from "./MyTask";
 
@@ -91,7 +92,7 @@ class Header extends React.PureComponent {
     }
     return (
       this.props.login && (
-        <div className={this.props.modeEmployes === 0?'Control': 'NoControl'}>
+        <div  className={this.props.modeEmployes === 0?'Control': 'NoControl'}>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <h3>Приветствую, {name}!</h3>
           </div>
