@@ -14,6 +14,7 @@ class Employes extends React.PureComponent {
       PropTypes.shape({
         id: PropTypes.number.isRequired, // id сотрудника
         login: PropTypes.string.isRequired, // логин для входа
+        status: PropTypes.number.isRequired, // 0 - offline, 1 - online
         level: PropTypes.number.isRequired, // уровень доступа 1-низший, 2 - для начальников отделов, 3 - для руководства
         name: PropTypes.string.isRequired, // ФИО
         email: PropTypes.string.isRequired, // почта
@@ -122,7 +123,18 @@ class Employes extends React.PureComponent {
   };
 
   deleteEmployee = (eo) => {
-    this.props.cbDeleteEmployee(Number(eo.target.name));
+    let deleteUser = this.props.employes.find((i) => {
+      return i.id === Number(eo.target.name);
+    });
+    if (deleteUser.status === 1) {
+      alert("Вы не можете удалить сотрудника, который сейчас в сети");
+    } else {
+      let isDelete = window.confirm("Удалить сотрудника?");
+      if (isDelete) {
+        this.props.cbDeleteEmployee(Number(eo.target.name));
+        alert("Сотрудник удален");
+      }
+    }
   };
 
   render() {
@@ -138,48 +150,52 @@ class Employes extends React.PureComponent {
       employes = employesList.map((emp) => {
         if (emp.id !== user.id) {
           return (
-            <CSSTransition classNames="list" key={emp.id} timeout={{enter: 300, exit:300}}>
-              <div className="ListEmployes"  key={emp.id}>
-              {this.props.workMode === 1 && (
-                <div className={emp.status ? "online" : "offline"}></div>
-              )}
-              <p>{emp.name}</p>
-              <p>{emp.position}</p>
-              <br />
-              <button
-                className="button"
-                name={emp.id}
-                onPointerDown={this.info}
-              >
-                [Информация]
-              </button>
-              {user.level > 1 && (
+            <CSSTransition
+              classNames="list"
+              key={emp.id}
+              timeout={{ enter: 300, exit: 300 }}
+            >
+              <div className="ListEmployes" key={emp.id}>
+                {this.props.workMode === 1 && (
+                  <div className={emp.status ? "online" : "offline"}></div>
+                )}
+                <p>{emp.name}</p>
+                <p>{emp.position}</p>
+                <br />
                 <button
                   className="button"
                   name={emp.id}
-                  onPointerDown={this.sendTask}
+                  onPointerDown={this.info}
                 >
-                  [Поставить задачу]
+                  [Информация]
                 </button>
-              )}
-              {user.level === 3 && (
-                <button
-                  className="button"
-                  name={emp.id}
-                  onPointerDown={this.changeEmployee}
-                >
-                  [Изменить]
-                </button>
-              )}
-              {user.level === 3 && (
-                <button
-                  className="button"
-                  name={emp.id}
-                  onPointerDown={this.deleteEmployee}
-                >
-                  [Удалить]
-                </button>
-              )}
+                {user.level > 1 && (
+                  <button
+                    className="button"
+                    name={emp.id}
+                    onPointerDown={this.sendTask}
+                  >
+                    [Поставить задачу]
+                  </button>
+                )}
+                {user.level === 3 && (
+                  <button
+                    className="button"
+                    name={emp.id}
+                    onPointerDown={this.changeEmployee}
+                  >
+                    [Изменить]
+                  </button>
+                )}
+                {user.level === 3 && (
+                  <button
+                    className="button"
+                    name={emp.id}
+                    onPointerDown={this.deleteEmployee}
+                  >
+                    [Удалить]
+                  </button>
+                )}
               </div>
             </CSSTransition>
           );
@@ -188,22 +204,26 @@ class Employes extends React.PureComponent {
 
       employeeInfo = this.state.employeeInfo.map((i) => {
         return (
-          <CSSTransition classNames="info" key={i.id} timeout={{enter:300, exit:300}}>
-          <div className="ListEmployes" key={i.id}>
-            <h2>Информация о сотруднике</h2>
-            <p>ФИО:{i.name}</p>
-            <p>Уровень доступа:{i.level}</p>
-            <p>Почта:{i.email}</p>
-            <p>Телефон:{i.phone}</p>
-            <p>Отдел:{i.department}</p>
-            <p>Дoлжность:{i.position}</p>
-            <input
-              className="button"
-              type="button"
-              value="[Вернуться к списку]"
-              onPointerDown={this.exitInfo}
-            ></input>
-          </div>
+          <CSSTransition
+            classNames="info"
+            key={i.id}
+            timeout={{ enter: 300, exit: 300 }}
+          >
+            <div className="ListEmployes" key={i.id}>
+              <h2>Информация о сотруднике</h2>
+              <p>ФИО:{i.name}</p>
+              <p>Уровень доступа:{i.level}</p>
+              <p>Почта:{i.email}</p>
+              <p>Телефон:{i.phone}</p>
+              <p>Отдел:{i.department}</p>
+              <p>Дoлжность:{i.position}</p>
+              <input
+                className="button"
+                type="button"
+                value="[Вернуться к списку]"
+                onPointerDown={this.exitInfo}
+              ></input>
+            </div>
           </CSSTransition>
         );
       });
@@ -213,7 +233,8 @@ class Employes extends React.PureComponent {
       this.props.login && (
         <React.Fragment>
           {this.state.mode === 0 && (
-            <TransitionGroup component='div' 
+            <TransitionGroup
+              component="div"
               className={
                 this.props.isOpenWindowInHeader
                   ? "WrapperEmployes"
