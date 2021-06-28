@@ -19,9 +19,9 @@ class App extends React.PureComponent {
 
   componentDidMount() {
     this.loadData();
-    /* setInterval(() => {
+    setInterval(() => {
       this.loadData();
-    }, 15000); */
+    }, 15000);
     window.addEventListener("beforeunload", this.onBeforeUnload);
   }
 
