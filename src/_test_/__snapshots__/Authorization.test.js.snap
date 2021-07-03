@@ -1,0 +1,303 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`проверка Authorization 1`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  
+</div>
+`;
+
+exports[`проверка Authorization 2`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="sdfasdf"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка Authorization 3`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка Authorization 4`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="saveliev47"
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка нажатия на кнопку войти 1`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  
+</div>
+`;
+
+exports[`проверка нажатия на кнопку войти 2`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка нажатия на кнопку войти 3`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка нажатия на кнопку войти 4`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка рендера кнопки при верном логине 1`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  
+</div>
+`;
+
+exports[`проверка рендера кнопки при верном логине 2`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;

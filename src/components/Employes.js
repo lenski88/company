@@ -155,46 +155,46 @@ class Employes extends React.PureComponent {
               key={emp.id}
               timeout={{ enter: 300, exit: 300 }}
             >
-              <div className="ListEmployes" key={emp.id}>
+              <div className="ListEmployes" id={emp.id} key={emp.id}>
                 {this.props.workMode === 1 && (
                   <div className={emp.status ? "online" : "offline"}></div>
                 )}
-                <p>{emp.name}</p>
-                <p>{emp.position}</p>
+                <p id="name">{emp.name}</p>
+                <p id="position">{emp.position}</p>
                 <br />
-                <button
+                <input
                   className="button"
+                  type="button"
                   name={emp.id}
+                  value="[Информация]"
                   onPointerDown={this.info}
-                >
-                  [Информация]
-                </button>
+                ></input>
                 {user.level > 1 && (
-                  <button
+                  <input
                     className="button"
+                    type="button"
                     name={emp.id}
+                    value="[Поставить задачу]"
                     onPointerDown={this.sendTask}
-                  >
-                    [Поставить задачу]
-                  </button>
+                  ></input>
                 )}
                 {user.level === 3 && (
-                  <button
+                  <input
                     className="button"
+                    type="button"
                     name={emp.id}
+                    value="[Изменить]"
                     onPointerDown={this.changeEmployee}
-                  >
-                    [Изменить]
-                  </button>
+                  ></input>
                 )}
                 {user.level === 3 && (
-                  <button
+                  <input
                     className="button"
+                    type="button"
                     name={emp.id}
+                    value="[Удалить]"
                     onPointerDown={this.deleteEmployee}
-                  >
-                    [Удалить]
-                  </button>
+                  ></input>
                 )}
               </div>
             </CSSTransition>

@@ -94,7 +94,7 @@ class Header extends React.PureComponent {
       this.props.login && (
         <div  className={this.props.modeEmployes === 0?'Control': 'NoControl'}>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <h3>Приветствую, {name}!</h3>
+            <h3 id='helloUser'>Приветствую, {name}!</h3>
           </div>
           <div  style={{ display: "flex", flexDirection: 'row', flexWrap:'wrap', justifyContent:'center'}}>
             {!this.state.addEmp && (
@@ -127,6 +127,7 @@ class Header extends React.PureComponent {
             {!this.state.addEmp && (
               <input
                 className="button"
+                id='buttonTask'
                 type="button"
                 value={countTask}
                 onPointerDown={this.myTask}

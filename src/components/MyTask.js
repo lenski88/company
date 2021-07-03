@@ -10,8 +10,6 @@ class MyTask extends React.PureComponent {
     cbDeleteTask: PropTypes.func,
   };
 
-  state = {};
-
   exit = () => {
     this.props.cbExitTask();
   };

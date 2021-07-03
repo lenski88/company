@@ -1,0 +1,608 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`проверка Authorization 1`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  
+</div>
+`;
+
+exports[`проверка Authorization 2`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="sdfasdf"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка Authorization 3`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка Authorization 4`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="saveliev47"
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка header 1`] = `
+<div
+  className="Control"
+>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <h3
+      id="helloUser"
+    >
+      Приветствую, 
+      Мишель
+      !
+    </h3>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <div>
+      <span>
+        Искать по отделам:
+      </span>
+      <br />
+      <br />
+      <select
+        className="inputText"
+        onChange={[Function]}
+      >
+        <option
+          value="Все"
+        >
+          Все
+        </option>
+        <option
+          value="Руководство"
+        >
+          Руководство
+        </option>
+        <option
+          value="Отдел закупок"
+        >
+          Отдел закупок
+        </option>
+        <option
+          value="Отдел продаж"
+        >
+          Отдел продаж
+        </option>
+        <option
+          value="Транспортный отдел"
+        >
+          Транспортный отдел
+        </option>
+        <option
+          value="Бухгалтерия"
+        >
+          Бухгалтерия
+        </option>
+        <option
+          value="Отдел кадров"
+        >
+          Отдел кадров
+        </option>
+        <option
+          value="Складское хозяйство"
+        >
+          Складское хозяйство
+        </option>
+      </select>
+    </div>
+    <input
+      className="button"
+      onPointerDown={[Function]}
+      type="button"
+      value="[Добавить сотрудника]"
+    />
+    <input
+      className="button"
+      id="buttonTask"
+      onPointerDown={[Function]}
+      type="button"
+      value="[Мои задачи]:[0]"
+    />
+    <input
+      className="button"
+      onPointerDown={[Function]}
+      type="button"
+      value="[Выйти]"
+    />
+  </div>
+</div>
+`;
+
+exports[`проверка header 2`] = `
+<div
+  className="Control"
+>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <h3
+      id="helloUser"
+    >
+      Приветствую, 
+      Цицерон
+      !
+    </h3>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <div>
+      <span>
+        Искать по отделам:
+      </span>
+      <br />
+      <br />
+      <select
+        className="inputText"
+        onChange={[Function]}
+      >
+        <option
+          value="Все"
+        >
+          Все
+        </option>
+        <option
+          value="Руководство"
+        >
+          Руководство
+        </option>
+        <option
+          value="Отдел закупок"
+        >
+          Отдел закупок
+        </option>
+        <option
+          value="Отдел продаж"
+        >
+          Отдел продаж
+        </option>
+        <option
+          value="Транспортный отдел"
+        >
+          Транспортный отдел
+        </option>
+        <option
+          value="Бухгалтерия"
+        >
+          Бухгалтерия
+        </option>
+        <option
+          value="Отдел кадров"
+        >
+          Отдел кадров
+        </option>
+        <option
+          value="Складское хозяйство"
+        >
+          Складское хозяйство
+        </option>
+      </select>
+    </div>
+    <input
+      className="button"
+      id="buttonTask"
+      onPointerDown={[Function]}
+      type="button"
+      value="[Мои задачи]:[0]"
+    />
+    <input
+      className="button"
+      onPointerDown={[Function]}
+      type="button"
+      value="[Выйти]"
+    />
+  </div>
+</div>
+`;
+
+exports[`проверка header 3`] = `
+<div
+  className="NoControl"
+>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <h3
+      id="helloUser"
+    >
+      Приветствую, 
+      Цицерон
+      !
+    </h3>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "flex",
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <div>
+      <span>
+        Искать по отделам:
+      </span>
+      <br />
+      <br />
+      <select
+        className="inputText"
+        onChange={[Function]}
+      >
+        <option
+          value="Все"
+        >
+          Все
+        </option>
+        <option
+          value="Руководство"
+        >
+          Руководство
+        </option>
+        <option
+          value="Отдел закупок"
+        >
+          Отдел закупок
+        </option>
+        <option
+          value="Отдел продаж"
+        >
+          Отдел продаж
+        </option>
+        <option
+          value="Транспортный отдел"
+        >
+          Транспортный отдел
+        </option>
+        <option
+          value="Бухгалтерия"
+        >
+          Бухгалтерия
+        </option>
+        <option
+          value="Отдел кадров"
+        >
+          Отдел кадров
+        </option>
+        <option
+          value="Складское хозяйство"
+        >
+          Складское хозяйство
+        </option>
+      </select>
+    </div>
+    <input
+      className="button"
+      id="buttonTask"
+      onPointerDown={[Function]}
+      type="button"
+      value="[Мои задачи]:[0]"
+    />
+    <input
+      className="button"
+      onPointerDown={[Function]}
+      type="button"
+      value="[Выйти]"
+    />
+  </div>
+</div>
+`;
+
+exports[`проверка header 4`] = `null`;
+
+exports[`проверка нажатия на кнопку войти 1`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  
+</div>
+`;
+
+exports[`проверка нажатия на кнопку войти 2`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка нажатия на кнопку войти 3`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка нажатия на кнопку войти 4`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка рендера кнопки при верном логине 1`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  
+</div>
+`;
+
+exports[`проверка рендера кнопки при верном логине 2`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;

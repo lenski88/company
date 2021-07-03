@@ -1,0 +1,473 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`правильность отображения имени адресата 1`] = `
+<div
+  className="SendTask"
+>
+  <div
+    style={
+      Object {
+        "color": "#fbfc55",
+        "textAlign": "center",
+      }
+    }
+  >
+    <h2>
+      Новая задача
+    </h2>
+    <h4
+      id="empName"
+    >
+      Кому:
+      Кулаков Кондрат
+       
+    </h4>
+  </div>
+  <textarea
+    className="inputText"
+    cols="40"
+    maxLength="400"
+    onChange={[Function]}
+    placeholder="Поле для ввода..."
+    rows="10"
+    value=""
+  />
+  <input
+    className="button"
+    onPointerDown={[Function]}
+    type="button"
+    value="[Отмена]"
+  />
+</div>
+`;
+
+exports[`проверка Authorization 1`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  
+</div>
+`;
+
+exports[`проверка Authorization 2`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="sdfasdf"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка Authorization 3`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка Authorization 4`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="saveliev47"
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка нажатия на кнопку войти 1`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  
+</div>
+`;
+
+exports[`проверка нажатия на кнопку войти 2`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка нажатия на кнопку войти 3`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка нажатия на кнопку войти 4`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка рендера кнопки при верном логине 1`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  
+</div>
+`;
+
+exports[`проверка рендера кнопки при верном логине 2`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`рендерится ли кнопка 'отмена' 1`] = `
+<div
+  className="SendTask"
+>
+  <div
+    style={
+      Object {
+        "color": "#fbfc55",
+        "textAlign": "center",
+      }
+    }
+  >
+    <h2>
+      Новая задача
+    </h2>
+    <h4
+      id="empName"
+    >
+      Кому:
+      Кулаков Кондрат
+       
+    </h4>
+  </div>
+  <textarea
+    className="inputText"
+    cols="40"
+    maxLength="400"
+    onChange={[Function]}
+    placeholder="Поле для ввода..."
+    rows="10"
+    value=""
+  />
+  <input
+    className="button"
+    onPointerDown={[Function]}
+    type="button"
+    value="[Отмена]"
+  />
+</div>
+`;
+
+exports[`рендерится ли кнопка 'отправить' при заполненном поле ввода 1`] = `
+<div
+  className="SendTask"
+>
+  <div
+    style={
+      Object {
+        "color": "#fbfc55",
+        "textAlign": "center",
+      }
+    }
+  >
+    <h2>
+      Новая задача
+    </h2>
+    <h4
+      id="empName"
+    >
+      Кому:
+      Кулаков Кондрат
+       
+    </h4>
+  </div>
+  <textarea
+    className="inputText"
+    cols="40"
+    maxLength="400"
+    onChange={[Function]}
+    placeholder="Поле для ввода..."
+    rows="10"
+    value=""
+  />
+  <input
+    className="button"
+    onPointerDown={[Function]}
+    type="button"
+    value="[Отмена]"
+  />
+</div>
+`;
+
+exports[`рендерится ли кнопка 'отправить' при заполненном поле ввода 2`] = `
+<div
+  className="SendTask"
+>
+  <div
+    style={
+      Object {
+        "color": "#fbfc55",
+        "textAlign": "center",
+      }
+    }
+  >
+    <h2>
+      Новая задача
+    </h2>
+    <h4
+      id="empName"
+    >
+      Кому:
+      Кулаков Кондрат
+       
+    </h4>
+  </div>
+  <textarea
+    className="inputText"
+    cols="40"
+    maxLength="400"
+    onChange={[Function]}
+    placeholder="Поле для ввода..."
+    rows="10"
+    value="dk;gasjkdghlkjahdlkjahldkj"
+  />
+  <input
+    className="button"
+    onPointerDown={[Function]}
+    type="button"
+    value="[Отправить]"
+  />
+  <input
+    className="button"
+    onPointerDown={[Function]}
+    type="button"
+    value="[Отмена]"
+  />
+</div>
+`;

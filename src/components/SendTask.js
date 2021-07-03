@@ -84,7 +84,7 @@ class SendTask extends React.Component {
       <div className="SendTask">
         <div style={{ color: "#fbfc55", textAlign: "center" }}>
           <h2>Новая задача</h2>
-          <h4>Кому:{this.empName()} </h4>
+          <h4 id='empName'>Кому:{this.empName()} </h4>
         </div>
         <textarea
           className="inputText"

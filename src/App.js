@@ -5,6 +5,7 @@ import Authorization from "./components/Authorization";
 import Employes from "./components/Employes";
 import Header from "./components/Header";
 
+
 class App extends React.PureComponent {
   state = {
     dataReady: false,
@@ -15,17 +16,17 @@ class App extends React.PureComponent {
     workMode: 1, // 1 - отобразить всех сотрудников, 2 - отобразить отфильтрованный список по отделам
     isOpenHeader: 1,
     modeEmployes: 0,
+    
   };
 
   componentDidMount() {
     this.loadData();
-    setInterval(() => {
-      this.loadData();
-    }, 15000);
+   this.timerId = setInterval(this.loadData, 15000);
     window.addEventListener("beforeunload", this.onBeforeUnload);
   }
 
   componentWillUnmount() {
+    clearInterval(this.timerId)
     window.removeEventListener("beforeunload", this.onBeforeUnload);
   }
 

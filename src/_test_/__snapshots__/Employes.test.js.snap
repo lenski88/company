@@ -1,0 +1,759 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`проверка Authorization 1`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  
+</div>
+`;
+
+exports[`проверка Authorization 2`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="sdfasdf"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка Authorization 3`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка Authorization 4`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="saveliev47"
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка employes 1`] = `
+<div
+  className="NoWrapperEmployes"
+>
+  <div
+    className="ListEmployes"
+    id={35}
+  >
+    <p
+      id="name"
+    >
+      Смирнова Августа Мироновна
+    </p>
+    <p
+      id="position"
+    >
+      Начальник отдела
+    </p>
+    <br />
+    <input
+      className="button"
+      name={35}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Информация]"
+    />
+    <input
+      className="button"
+      name={35}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Поставить задачу]"
+    />
+    <input
+      className="button"
+      name={35}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Изменить]"
+    />
+    <input
+      className="button"
+      name={35}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Удалить]"
+    />
+  </div>
+  <div
+    className="ListEmployes"
+    id={36}
+  >
+    <p
+      id="name"
+    >
+      Волкова Альжбета Наумовна
+    </p>
+    <p
+      id="position"
+    >
+      Специалист по кадровому делопроизводству
+    </p>
+    <br />
+    <input
+      className="button"
+      name={36}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Информация]"
+    />
+    <input
+      className="button"
+      name={36}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Поставить задачу]"
+    />
+    <input
+      className="button"
+      name={36}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Изменить]"
+    />
+    <input
+      className="button"
+      name={36}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Удалить]"
+    />
+  </div>
+  <div
+    className="ListEmployes"
+    id={37}
+  >
+    <p
+      id="name"
+    >
+      Шестакова Марьяна Рудольфовна
+    </p>
+    <p
+      id="position"
+    >
+      Специалист по кадровому делопроизводству
+    </p>
+    <br />
+    <input
+      className="button"
+      name={37}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Информация]"
+    />
+    <input
+      className="button"
+      name={37}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Поставить задачу]"
+    />
+    <input
+      className="button"
+      name={37}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Изменить]"
+    />
+    <input
+      className="button"
+      name={37}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Удалить]"
+    />
+  </div>
+  <div
+    className="ListEmployes"
+    id={38}
+  >
+    <p
+      id="name"
+    >
+      Горбачёва Харита Георгиевна
+    </p>
+    <p
+      id="position"
+    >
+      Специалист по кадровому делопроизводству
+    </p>
+    <br />
+    <input
+      className="button"
+      name={38}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Информация]"
+    />
+    <input
+      className="button"
+      name={38}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Поставить задачу]"
+    />
+    <input
+      className="button"
+      name={38}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Изменить]"
+    />
+    <input
+      className="button"
+      name={38}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Удалить]"
+    />
+  </div>
+  <div
+    className="ListEmployes"
+    id={39}
+  >
+    <p
+      id="name"
+    >
+      Михалова Розалина Геласьевна
+    </p>
+    <p
+      id="position"
+    >
+      Специалист по кадровому делопроизводству
+    </p>
+    <br />
+    <input
+      className="button"
+      name={39}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Информация]"
+    />
+    <input
+      className="button"
+      name={39}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Поставить задачу]"
+    />
+    <input
+      className="button"
+      name={39}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Изменить]"
+    />
+    <input
+      className="button"
+      name={39}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Удалить]"
+    />
+  </div>
+</div>
+`;
+
+exports[`проверка employes 2`] = `null`;
+
+exports[`проверка нажатия на кнопку войти 1`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  
+</div>
+`;
+
+exports[`проверка нажатия на кнопку войти 2`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка нажатия на кнопку войти 3`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка нажатия на кнопку войти 4`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;
+
+exports[`проверка правильности отображения данных о сотруднике 1`] = `
+<div
+  className="NoWrapperEmployes"
+>
+  <div
+    className="ListEmployes"
+    id={35}
+  >
+    <p
+      id="name"
+    >
+      Смирнова Августа Мироновна
+    </p>
+    <p
+      id="position"
+    >
+      Начальник отдела
+    </p>
+    <br />
+    <input
+      className="button"
+      name={35}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Информация]"
+    />
+    <input
+      className="button"
+      name={35}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Поставить задачу]"
+    />
+    <input
+      className="button"
+      name={35}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Изменить]"
+    />
+    <input
+      className="button"
+      name={35}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Удалить]"
+    />
+  </div>
+  <div
+    className="ListEmployes"
+    id={36}
+  >
+    <p
+      id="name"
+    >
+      Волкова Альжбета Наумовна
+    </p>
+    <p
+      id="position"
+    >
+      Специалист по кадровому делопроизводству
+    </p>
+    <br />
+    <input
+      className="button"
+      name={36}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Информация]"
+    />
+    <input
+      className="button"
+      name={36}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Поставить задачу]"
+    />
+    <input
+      className="button"
+      name={36}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Изменить]"
+    />
+    <input
+      className="button"
+      name={36}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Удалить]"
+    />
+  </div>
+  <div
+    className="ListEmployes"
+    id={37}
+  >
+    <p
+      id="name"
+    >
+      Шестакова Марьяна Рудольфовна
+    </p>
+    <p
+      id="position"
+    >
+      Специалист по кадровому делопроизводству
+    </p>
+    <br />
+    <input
+      className="button"
+      name={37}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Информация]"
+    />
+    <input
+      className="button"
+      name={37}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Поставить задачу]"
+    />
+    <input
+      className="button"
+      name={37}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Изменить]"
+    />
+    <input
+      className="button"
+      name={37}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Удалить]"
+    />
+  </div>
+  <div
+    className="ListEmployes"
+    id={38}
+  >
+    <p
+      id="name"
+    >
+      Горбачёва Харита Георгиевна
+    </p>
+    <p
+      id="position"
+    >
+      Специалист по кадровому делопроизводству
+    </p>
+    <br />
+    <input
+      className="button"
+      name={38}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Информация]"
+    />
+    <input
+      className="button"
+      name={38}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Поставить задачу]"
+    />
+    <input
+      className="button"
+      name={38}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Изменить]"
+    />
+    <input
+      className="button"
+      name={38}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Удалить]"
+    />
+  </div>
+  <div
+    className="ListEmployes"
+    id={39}
+  >
+    <p
+      id="name"
+    >
+      Михалова Розалина Геласьевна
+    </p>
+    <p
+      id="position"
+    >
+      Специалист по кадровому делопроизводству
+    </p>
+    <br />
+    <input
+      className="button"
+      name={39}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Информация]"
+    />
+    <input
+      className="button"
+      name={39}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Поставить задачу]"
+    />
+    <input
+      className="button"
+      name={39}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Изменить]"
+    />
+    <input
+      className="button"
+      name={39}
+      onPointerDown={[Function]}
+      type="button"
+      value="[Удалить]"
+    />
+  </div>
+</div>
+`;
+
+exports[`проверка рендера кнопки при верном логине 1`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value=""
+  />
+  <br />
+  <span>
+    
+  </span>
+  <br />
+  <br />
+  
+</div>
+`;
+
+exports[`проверка рендера кнопки при верном логине 2`] = `
+<div
+  className="Authorization"
+>
+  <label>
+    Введите логин:
+  </label>
+  <br />
+  <input
+    autoFocus={true}
+    className="inputText"
+    name="nameUser"
+    onChange={[Function]}
+    type="text"
+    value="ivanov0"
+  />
+  <br />
+  <span>
+    Нет такого сотрудника
+  </span>
+  <br />
+  <br />
+  <input
+    className="button"
+    disabled={false}
+    onPointerDown={[Function]}
+    type="button"
+    value="[Войти]"
+  />
+</div>
+`;

@@ -8,8 +8,8 @@ class ChangeEmployee extends React.PureComponent {
     employes: PropTypes.array.isRequired,
     idEmp: PropTypes.number.isRequired,
     indexEmp: PropTypes.number.isRequired,
-    cbAddChangeEmp:PropTypes.func,
-    cbChangeExit:PropTypes.func
+    cbAddChangeEmp: PropTypes.func,
+    cbChangeExit: PropTypes.func,
   };
 
   state = {
@@ -86,23 +86,22 @@ class ChangeEmployee extends React.PureComponent {
 
   addChange = () => {
     this.props.cbAddChangeEmp({
-      id:this.props.idEmp,
+      id: this.props.idEmp,
       login: this.props.employes[this.props.indexEmp].login,
-      status:this.props.employes[this.props.indexEmp].status,
-      level:this.state.changeLevel,
+      status: this.props.employes[this.props.indexEmp].status,
+      level: this.state.changeLevel,
       name: this.props.employes[this.props.indexEmp].name,
-      email:this.state.changeEmail,
-      phone:this.state.changePhone,
-      department:this.state.changeDepartment,
-      position:this.state.changePosition,
-      task:this.props.employes[this.props.indexEmp].task
-    })
-
+      email: this.state.changeEmail,
+      phone: this.state.changePhone,
+      department: this.state.changeDepartment,
+      position: this.state.changePosition,
+      task: this.props.employes[this.props.indexEmp].task,
+    });
   };
 
   changeExit = () => {
-    this.props.cbChangeExit()
-  }
+    this.props.cbChangeExit();
+  };
 
   render() {
     return (
